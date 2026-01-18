@@ -1,4 +1,4 @@
-REMOVED-PHP
+Midtrans-PHP
 ===============
 
 [![PHP version](https://badge.fury.io/ph/midtrans%2Fmidtrans-php.svg)](https://badge.fury.io/ph/midtrans%2Fmidtrans-php)
@@ -7,9 +7,9 @@ REMOVED-PHP
 [![Total Downloads](https://poser.pugx.org/midtrans/midtrans-php/downloads)](https://packagist.org/packages/midtrans/midtrans-php)
 <!-- [![Build Status](https://travis-ci.org/midtrans/midtrans-php.svg)](https://travis-ci.org/midtrans/midtrans-php) -->
 
-[REMOVED](https://midtrans.com) :heart: PHP!
+[Midtrans](https://midtrans.com) :heart: PHP!
 
-This is the Official PHP wrapper/library for REMOVED Payment API, that is compatible with Composer. Visit [https://midtrans.com](https://midtrans.com) for more information about the product and see documentation at [http://docs.midtrans.com](https://docs.midtrans.com) for more technical details.
+This is the Official PHP wrapper/library for Midtrans Payment API, that is compatible with Composer. Visit [https://midtrans.com](https://midtrans.com) for more information about the product and see documentation at [http://docs.midtrans.com](https://docs.midtrans.com) for more technical details.
 Starting version 2.6, this library now supports Snap-bi. You can go to this [docs](https://docs.midtrans.com/reference/core-api-snap-open-api-overview) to learn more about Snap-bi.
 ## 1. Installation
 
@@ -37,16 +37,16 @@ and run `composer install` on your terminal.
 
 > **Note:** If you are using Laravel framework, in [some](https://laracasts.com/discuss/channels/general-discussion/using-non-laravel-composer-package-with-laravel?page=1#reply=461608) [case](https://stackoverflow.com/a/23675376) you also need to run `composer dumpautoload`
 
-> `/REMOVED` will then be available (auto loaded) as Object in your Laravel project.
+> `/Midtrans` will then be available (auto loaded) as Object in your Laravel project.
 
 ### 1.b Manual Instalation
 
 If you are not using Composer, you can clone or [download](https://github.com/midtrans/midtrans-php/archive/master.zip) this repository.
 
-Then you should require/autoload `REMOVED.php` file on your code.
+Then you should require/autoload `Midtrans.php` file on your code.
 
 ```php
-require_once dirname(__FILE__) . '/pathofproject/REMOVED.php';
+require_once dirname(__FILE__) . '/pathofproject/Midtrans.php';
 
 // my code goes here
 ```
@@ -57,13 +57,13 @@ require_once dirname(__FILE__) . '/pathofproject/REMOVED.php';
 
 ```php
 // Set your Merchant Server Key
-\REMOVED\Config::$serverKey = '<your server key>';
+\Midtrans\Config::$serverKey = '<your server key>';
 // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-\REMOVED\Config::$isProduction = false;
+\Midtrans\Config::$isProduction = false;
 // Set sanitization on (default)
-\REMOVED\Config::$isSanitized = true;
+\Midtrans\Config::$isSanitized = true;
 // Set 3DS transaction for credit card to true
-\REMOVED\Config::$is3ds = true;
+\Midtrans\Config::$is3ds = true;
 ```
 
 #### Override Notification URL
@@ -71,9 +71,9 @@ require_once dirname(__FILE__) . '/pathofproject/REMOVED.php';
 You can opt to change or add custom notification urls on every transaction. It can be achieved by adding additional HTTP headers into charge request.
 
 ```php
-// Add new notification url(s) alongside the settings on REMOVED Dashboard Portal (MAP)
+// Add new notification url(s) alongside the settings on Midtrans Dashboard Portal (MAP)
 Config::$appendNotifUrl = "https://example.com/test1,https://example.com/test2";
-// Use new notification url(s) disregarding the settings on REMOVED Dashboard Portal (MAP)
+// Use new notification url(s) disregarding the settings on Midtrans Dashboard Portal (MAP)
 Config::$overrideNotifUrl = "https://example.com/test1";
 ```
 
@@ -85,7 +85,7 @@ Config::$overrideNotifUrl = "https://example.com/test1";
 
 #### Idempotency-Key
 You can opt to add idempotency key on charge transaction. It can be achieved by adding additional HTTP headers into charge request. 
-Is a unique value that is put on header on API request. REMOVED API accept Idempotency-Key on header to safely handle retry request 
+Is a unique value that is put on header on API request. Midtrans API accept Idempotency-Key on header to safely handle retry request 
 without performing the same operation twice. This is helpful for cases where merchant didn't receive the response because of network issue or other unexpected error.
 
 ```php
@@ -117,7 +117,7 @@ $params = array(
     )
 );
 
-$snapToken = \REMOVED\Snap::getSnapToken($params);
+$snapToken = \Midtrans\Snap::getSnapToken($params);
 ```
 
 #### Initialize Snap JS when customer click pay button
@@ -172,7 +172,7 @@ $params = array(
 
 try {
   // Get Snap Payment Page URL
-  $paymentUrl = \REMOVED\Snap::createTransaction($params)->redirect_url;
+  $paymentUrl = \Midtrans\Snap::createTransaction($params)->redirect_url;
   
   // Redirect to Snap Payment Page
   header('Location: ' . $paymentUrl);
@@ -191,7 +191,7 @@ You can see some Core API examples [here](examples/core-api).
 #### Set Client Key
 
 ```javascript
-REMOVEDNew3ds.clientKey = "<your client key>";
+MidtransNew3ds.clientKey = "<your client key>";
 ```
 
 #### Checkout Page
@@ -289,7 +289,7 @@ $transaction_data = array(
 ##### 5. Charge
 
 ```php
-$response = \REMOVED\CoreApi::charge($transaction_data);
+$response = \Midtrans\CoreApi::charge($transaction_data);
 ```
 
 
@@ -358,7 +358,7 @@ HTTP notification will be sent whenever transaction status is changed.
 Example also available [here](examples/notification-handler.php)
 
 ```php
-$notif = new \REMOVED\Notification();
+$notif = new \Midtrans\Notification();
 
 $transaction = $notif->transaction_status;
 $fraud = $notif->fraud_status;
@@ -391,7 +391,7 @@ else if ($transaction == 'deny') {
 #### Get Transaction Status
 
 ```php
-$status = \REMOVED\Transaction::status($orderId);
+$status = \Midtrans\Transaction::status($orderId);
 var_dump($status);
 ```
 
@@ -399,21 +399,21 @@ var_dump($status);
 If transaction fraud_status == [CHALLENGE](https://support.midtrans.com/hc/en-us/articles/202710750-What-does-CHALLENGE-status-mean-What-should-I-do-if-there-is-a-CHALLENGE-transaction-), you can approve the transaction from Merchant Dashboard, or API :
 
 ```php
-$approve = \REMOVED\Transaction::approve($orderId);
+$approve = \Midtrans\Transaction::approve($orderId);
 var_dump($approve);
 ```
 
 #### Cancel Transaction
 You can Cancel transaction with `fraud_status == CHALLENGE`, or credit card transaction with `transaction_status == CAPTURE` (before it become SETTLEMENT)
 ```php
-$cancel = \REMOVED\Transaction::cancel($orderId);
+$cancel = \Midtrans\Transaction::cancel($orderId);
 var_dump($cancel);
 ```
 
 #### Expire Transaction
 You can Expire transaction with `transaction_status == PENDING` (before it become SETTLEMENT or EXPIRE)
 ```php
-$cancel = \REMOVED\Transaction::cancel($orderId);
+$cancel = \Midtrans\Transaction::cancel($orderId);
 var_dump($cancel);
 ```
 
@@ -426,7 +426,7 @@ $params = array(
     'amount' => 10000,
     'reason' => 'Item out of stock'
 );
-$refund = \REMOVED\Transaction::refund($orderId, $params);
+$refund = \Midtrans\Transaction::refund($orderId, $params);
 var_dump($refund);
 ```
 
@@ -439,7 +439,7 @@ $params = array(
     'amount' => 10000,
     'reason' => 'Item out of stock'
 );
-$direct_refund = \REMOVED\Transaction::refundDirect($orderId, $params);
+$direct_refund = \Midtrans\Transaction::refundDirect($orderId, $params);
 var_dump($direct_refund);
 ```
 ## 3. Snap-BI (*NEW FEATURE starting v2.6.0)
@@ -451,13 +451,13 @@ Standar Nasional Open API Pembayaran, or in short SNAP, is a national payment op
 //These config value are based on the header stated here https://docs.midtrans.com/reference/getting-started-1
 // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
 \SnapBi\Config::$isProduction = false;
-// Set your client id. Merchant’s client ID that will be given by REMOVED, will be used as X-CLIENT-KEY on request’s header in B2B Access Token API.
+// Set your client id. Merchant’s client ID that will be given by Midtrans, will be used as X-CLIENT-KEY on request’s header in B2B Access Token API.
 \SnapBi\Config::$snapBiClientId = "YOUR CLIENT ID";
 // Set your private key here, make sure to add \n on the private key, you can refer to the examples
 \SnapBi\Config::$snapBiPrivateKey = "YOUR PRIVATE KEY";
-// Set your client secret. Merchant’s secret key that will be given by REMOVED, will be used for symmetric signature generation for Transactional API’s header.
+// Set your client secret. Merchant’s secret key that will be given by Midtrans, will be used for symmetric signature generation for Transactional API’s header.
 \SnapBi\Config::$snapBiClientSecret = "YOUR CLIENT SECRET";
-// Set your partner id. Merchant’s partner ID that will be given by REMOVED, will be used as X-PARTNER-ID on Transactional API’s header.
+// Set your partner id. Merchant’s partner ID that will be given by Midtrans, will be used as X-PARTNER-ID on Transactional API’s header.
 \SnapBi\Config::$snapBiPartnerId = "YOUR PARTNER ID";
 // Set the channel id here.
 \SnapBi\Config::$snapBiChannelId = "CHANNEL ID";
@@ -1007,6 +1007,6 @@ Please change server key and client key on `phpunit.xml` to your own.
 
 There are several guides that must be taken care of when you develop new plugins.
 
-1. __Handling currency other than IDR.__ REMOVED `v1` and `v2` currently accepts payments in Indonesian Rupiah only. As a corrolary, there is a validation on the server to check whether the item prices are in integer or not. As much as you are tempted to round-off the price, DO NOT do that! Always prepare when your system uses currencies other than IDR, convert them to IDR accordingly, and only round the price AFTER that.
+1. __Handling currency other than IDR.__ Midtrans `v1` and `v2` currently accepts payments in Indonesian Rupiah only. As a corrolary, there is a validation on the server to check whether the item prices are in integer or not. As much as you are tempted to round-off the price, DO NOT do that! Always prepare when your system uses currencies other than IDR, convert them to IDR accordingly, and only round the price AFTER that.
 
 2. Consider using the __auto-sanitization__ feature.

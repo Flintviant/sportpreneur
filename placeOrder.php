@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+require_once 'api/midtrans-php-master/Midtrans.php';
 
 $id_member = $_SESSION['id_member'] ?? null;
 
@@ -31,28 +32,26 @@ if (substr($phone, 0, 1) === '0') {
     $phone = '62' . substr($phone, 1);
 }
 
-require_once 'api/midtrans-php-master/Midtrans.php';
+$stmt = $conn->prepare("
+    SELECT server_key, is_production, is_sanitized, is_3ds
+    FROM payment_settings
+    WHERE gateway = 'midtrans'
+    LIMIT 1
+");
+$stmt->execute();
+$result_mid = $stmt->get_result();
 
-    $stmt = $conn->prepare("
-        SELECT server_key, is_production, is_sanitized, is_3ds
-        FROM payment_settings
-        WHERE gateway = 'midtrans'
-        LIMIT 1
-    ");
-    $stmt->execute();
-    $result = $stmt->get_result();
+if ($result_mid->num_rows === 0) {
+    die('Konfigurasi Midtrans belum diset');
+}
 
-    if ($result->num_rows === 0) {
-        die('Konfigurasi Midtrans belum diset');
-    }
+$config = $result_mid->fetch_assoc();
 
-    $config = $result->fetch_assoc();
-
-    // set config midtrans
-    \Midtrans\Config::$serverKey    = $config['server_key'];
-    \Midtrans\Config::$isProduction = (bool)$config['is_production'];
-    \Midtrans\Config::$isSanitized  = (bool)$config['is_sanitized'];
-    \Midtrans\Config::$is3ds        = (bool)$config['is_3ds'];
+// set config midtrans
+\Midtrans\Config::$serverKey    = $config['server_key'];
+\Midtrans\Config::$isProduction = (bool)$config['is_production'];
+\Midtrans\Config::$isSanitized  = (bool)$config['is_sanitized'];
+\Midtrans\Config::$is3ds        = (bool)$config['is_3ds'];
 
 if (empty($_SESSION['cart'])) {
     http_response_code(400);
@@ -153,7 +152,6 @@ try {
     }
 
     $conn->commit();
-    unset($_SESSION['cart']);
 
 } catch (Exception $e) {
     $conn->rollback();

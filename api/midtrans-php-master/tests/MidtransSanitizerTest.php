@@ -1,11 +1,11 @@
 <?php
 
 
-namespace REMOVED;
+namespace Midtrans;
 
-use REMOVED\utility\MtChargeFixture;
+use Midtrans\utility\MtChargeFixture;
 
-class REMOVEDSanitizerTest extends \PHPUnit_Framework_TestCase
+class MidtransSanitizerTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testSanitizeWithoutOptionalRequest()

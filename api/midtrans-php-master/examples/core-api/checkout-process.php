@@ -3,9 +3,9 @@
 // Please refer to this docs:
 // https://docs.midtrans.com/en/core-api/credit-card?id=_2-sending-transaction-data-to-charge-api
 
-namespace REMOVED;
+namespace Midtrans;
 
-require_once dirname(__FILE__) . '/../../REMOVED.php';
+require_once dirname(__FILE__) . '/../../Midtrans.php';
 
 Config::$serverKey = '<your server key>';
 // Uncomment for append and override notification URL

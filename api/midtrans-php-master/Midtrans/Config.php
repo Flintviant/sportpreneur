@@ -1,9 +1,9 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
 /**
- * REMOVED Configuration
+ * Midtrans Configuration
  */
 class Config
 {
@@ -54,7 +54,7 @@ class Config
     public static $paymentIdempotencyKey;
     /**
      * Enable request params sanitizer (validate and modify charge request params).
-     * See REMOVED_Sanitizer for more details
+     * See Midtrans_Sanitizer for more details
      * 
      * @static
      */
@@ -74,7 +74,7 @@ class Config
     /**
      * Get baseUrl
      * 
-     * @return string REMOVED API URL, depends on $isProduction
+     * @return string Midtrans API URL, depends on $isProduction
      */
     public static function getBaseUrl()
     {

@@ -1,13 +1,13 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
-require_once dirname(__FILE__) . '/../REMOVED.php';
+require_once dirname(__FILE__) . '/../Midtrans.php';
 
 define(
     'TEST_CAPTURE_JSON', '{
         "status_code" : "200",
-        "status_message" : "REMOVED payment notification",
+        "status_message" : "Midtrans payment notification",
         "transaction_id" : "826acc53-14e0-4ae7-95e2-845bf0311579",
         "order_id" : "2014040745",
         "payment_type" : "credit_card",
@@ -19,7 +19,7 @@ define(
     }'
 );
 
-class REMOVEDNotificationTest extends \PHPUnit_Framework_TestCase
+class MidtransNotificationTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testCanWorkWithJSON()

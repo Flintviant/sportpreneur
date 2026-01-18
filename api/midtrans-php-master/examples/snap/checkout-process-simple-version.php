@@ -3,9 +3,9 @@
 // Please refer to this docs for snap popup:
 // https://docs.midtrans.com/en/snap/integration-guide?id=integration-steps-overview
 
-namespace REMOVED;
+namespace Midtrans;
 
-require_once dirname(__FILE__) . '/../../REMOVED.php';
+require_once dirname(__FILE__) . '/../../Midtrans.php';
 // Set Your server key
 // can find in Merchant Portal -> Settings -> Access keys
 Config::$serverKey = '<your server key>';

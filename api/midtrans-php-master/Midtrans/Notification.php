@@ -1,6 +1,6 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
 /**
  * Read raw post input and parse as JSON. Provide getters for fields in notification object
@@ -9,7 +9,7 @@ namespace REMOVED;
  *
  * ```php
  * 
- *   namespace REMOVED;
+ *   namespace Midtrans;
  * 
  *   $notif = new Notification();
  *   echo $notif->order_id;

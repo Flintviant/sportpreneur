@@ -8,26 +8,26 @@ if (version_compare(PHP_VERSION, '5.4', '<')) {
 
 // Check PHP Curl & json decode capabilities.
 if (!function_exists('curl_init') || !function_exists('curl_exec')) {
-    throw new Exception('REMOVED needs the CURL PHP extension.');
+    throw new Exception('Midtrans needs the CURL PHP extension.');
 }
 if (!function_exists('json_decode')) {
-    throw new Exception('REMOVED needs the JSON PHP extension.');
+    throw new Exception('Midtrans needs the JSON PHP extension.');
 }
 
 // Configurations
-require_once 'REMOVED/Config.php';
+require_once 'Midtrans/Config.php';
 
-// REMOVED API Resources
-require_once 'REMOVED/Transaction.php';
+// Midtrans API Resources
+require_once 'Midtrans/Transaction.php';
 
 // Plumbing
-require_once 'REMOVED/ApiRequestor.php';
-require_once 'REMOVED/Notification.php';
-require_once 'REMOVED/CoreApi.php';
-require_once 'REMOVED/Snap.php';
+require_once 'Midtrans/ApiRequestor.php';
+require_once 'Midtrans/Notification.php';
+require_once 'Midtrans/CoreApi.php';
+require_once 'Midtrans/Snap.php';
 require_once 'SnapBi/SnapBi.php';
 require_once 'SnapBi/SnapBiApiRequestor.php';
 require_once 'SnapBi/SnapBiConfig.php';
 
 // Sanitization
-require_once 'REMOVED/Sanitizer.php';
+require_once 'Midtrans/Sanitizer.php';

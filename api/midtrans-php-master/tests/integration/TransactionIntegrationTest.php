@@ -1,10 +1,10 @@
 <?php
 
-namespace REMOVED\integration;
+namespace Midtrans\integration;
 
-use REMOVED\CoreApi;
-use REMOVED\Transaction;
-use REMOVED\utility\MtChargeFixture;
+use Midtrans\CoreApi;
+use Midtrans\Transaction;
+use Midtrans\utility\MtChargeFixture;
 
 require_once 'IntegrationTest.php';
 

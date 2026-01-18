@@ -1,6 +1,6 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
 use Exception;
 
@@ -16,7 +16,7 @@ class Snap
      *
      * ```php
      *   
-     *   namespace REMOVED;
+     *   namespace Midtrans;
      * 
      *   $params = array(
      *     'transaction_details' => array(
@@ -43,7 +43,7 @@ class Snap
      *
      * ```php
      *
-     *   namespace REMOVED;
+     *   namespace Midtrans;
      *
      *   $params = array(
      *     'transaction_details' => array(

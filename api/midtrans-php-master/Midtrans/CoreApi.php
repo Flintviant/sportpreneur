@@ -1,6 +1,6 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
 use Exception;
 

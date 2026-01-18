@@ -1,9 +1,9 @@
 <?php
 
-namespace REMOVED\integration;
+namespace Midtrans\integration;
 
-use REMOVED\Snap;
-use REMOVED\utility\MtChargeFixture;
+use Midtrans\Snap;
+use Midtrans\utility\MtChargeFixture;
 
 require_once 'IntegrationTest.php';
 

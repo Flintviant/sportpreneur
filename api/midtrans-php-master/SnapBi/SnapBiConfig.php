@@ -3,7 +3,7 @@
 namespace SnapBi;
 
 /**
- * REMOVED Configuration
+ * Midtrans Configuration
  */
 class SnapBiConfig
 {
@@ -22,7 +22,7 @@ class SnapBiConfig
     /**
      * Get baseUrl
      *
-     * @return string REMOVED API URL, depends on $isProduction
+     * @return string Midtrans API URL, depends on $isProduction
      */
     public static function getSnapBiTransactionBaseUrl()
     {

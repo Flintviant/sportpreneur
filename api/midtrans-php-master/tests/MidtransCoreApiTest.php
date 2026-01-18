@@ -1,8 +1,8 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
-class REMOVEDCoreApiTest extends \PHPUnit_Framework_TestCase
+class MidtransCoreApiTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testCharge()
@@ -57,7 +57,7 @@ class REMOVEDCoreApiTest extends \PHPUnit_Framework_TestCase
         try {
             $paymentUrl = CoreApi::charge($params);
         } catch (\Exception $error) {
-            $this->assertContains("REMOVED API is returning API error. HTTP status code: 401", $error->getMessage());
+            $this->assertContains("Midtrans API is returning API error. HTTP status code: 401", $error->getMessage());
         }
     }
 

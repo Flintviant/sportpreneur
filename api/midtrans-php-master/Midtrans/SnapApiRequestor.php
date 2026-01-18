@@ -1,6 +1,6 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
 /**
  * Send request to Snap API
@@ -85,7 +85,7 @@ class SnapApiRequestor
         curl_setopt_array($ch, $curl_options);
 
         // For testing purpose
-        if (class_exists('\REMOVED\VT_Tests') && VT_Tests::$stubHttp) {
+        if (class_exists('\Midtrans\VT_Tests') && VT_Tests::$stubHttp) {
             $result = self::processStubed($curl_options, $url, $server_key, $data_hash, $post);
             $info = VT_Tests::$stubHttpStatus;
         } else {
@@ -104,7 +104,7 @@ class SnapApiRequestor
                 throw new \Exception($message);
             }
             if ($info['http_code'] != 201) {
-                $message = 'REMOVED Error (' . $info['http_code'] . '): '
+                $message = 'Midtrans Error (' . $info['http_code'] . '): '
                     . $result . ' | Request url: '.$url;
                 throw new \Exception($message, $info['http_code']);
             } else {

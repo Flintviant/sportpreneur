@@ -1,8 +1,8 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
-class REMOVEDApiRequestorTest extends \PHPUnit_Framework_TestCase
+class MidtransApiRequestorTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testConfigOptionsOverrideCurlOptions()

@@ -1,6 +1,6 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
 /**
  * Request params filters.

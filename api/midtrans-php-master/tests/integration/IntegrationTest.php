@@ -1,14 +1,14 @@
 <?php
 
-namespace REMOVED\integration;
+namespace Midtrans\integration;
 
-use REMOVED\Config;
+use Midtrans\Config;
 
 abstract class IntegrationTest extends \PHPUnit_Framework_TestCase
 {
     public static function setUpBeforeClass()
     {
-        Config::$serverKey = getenv('REMOVED');
+        Config::$serverKey = getenv('SERVER_KEY');
         Config::$clientKey = getenv('CLIENT_KEY');
         Config::$isProduction = false;
     }

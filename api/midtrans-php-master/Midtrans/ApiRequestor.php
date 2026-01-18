@@ -1,10 +1,10 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
 use Exception;
 /**
- * Send request to REMOVED API
+ * Send request to Midtrans API
  * Better don't use this class directly, please use CoreApi, Snap, and Transaction instead
  */
 
@@ -70,7 +70,7 @@ class ApiRequestor
         if (!$server_key) {
             throw new Exception(
                 'The ServerKey/ClientKey is null, You need to set the server-key from Config. Please double-check Config and ServerKey key. ' .
-                'You can check from the REMOVED Dashboard. ' .
+                'You can check from the Midtrans Dashboard. ' .
                 'See https://docs.midtrans.com/en/midtrans-account/overview?id=retrieving-api-access-keys ' .
                 'for the details or contact support at support@midtrans.com if you have any questions.'
             );
@@ -78,14 +78,14 @@ class ApiRequestor
             if ($server_key == "") {
                 throw new Exception(
                     'The ServerKey/ClientKey is invalid, as it is an empty string. Please double-check your ServerKey key. ' .
-                    'You can check from the REMOVED Dashboard. ' .
+                    'You can check from the Midtrans Dashboard. ' .
                     'See https://docs.midtrans.com/en/midtrans-account/overview?id=retrieving-api-access-keys ' .
                     'for the details or contact support at support@midtrans.com if you have any questions.'
                 );
             } elseif (preg_match('/\s/',$server_key)) {
                 throw new Exception(
                     'The ServerKey/ClientKey is contains white-space. Please double-check your API key. Please double-check your ServerKey key. ' .
-                    'You can check from the REMOVED Dashboard. ' .
+                    'You can check from the Midtrans Dashboard. ' .
                     'See https://docs.midtrans.com/en/midtrans-account/overview?id=retrieving-api-access-keys ' .
                     'for the details or contact support at support@midtrans.com if you have any questions.'
                 );
@@ -144,7 +144,7 @@ class ApiRequestor
         curl_setopt_array($ch, $curl_options);
 
         // For testing purpose
-        if (class_exists('\REMOVED\MT_Tests') && MT_Tests::$stubHttp) {
+        if (class_exists('\Midtrans\MT_Tests') && MT_Tests::$stubHttp) {
             $result = self::processStubed($curl_options, $url, $server_key, $data_hash, $method);
         } else {
             $result = curl_exec($ch);
@@ -162,9 +162,9 @@ class ApiRequestor
             }
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if (isset($result_array->status_code) && $result_array->status_code >= 401 && $result_array->status_code != 407) {
-                throw new Exception('REMOVED API is returning API error. HTTP status code: ' . $result_array->status_code . ' API response: ' . $result, $result_array->status_code);
+                throw new Exception('Midtrans API is returning API error. HTTP status code: ' . $result_array->status_code . ' API response: ' . $result, $result_array->status_code);
             } elseif ($httpCode >= 400) {
-                throw new Exception('REMOVED API is returning API error. HTTP status code: ' . $httpCode . ' API response: ' . $result, $httpCode);
+                throw new Exception('Midtrans API is returning API error. HTTP status code: ' . $httpCode . ' API response: ' . $result, $httpCode);
             } else {
                 return $result_array;
             }

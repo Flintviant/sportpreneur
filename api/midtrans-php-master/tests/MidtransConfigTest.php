@@ -1,8 +1,8 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
-class REMOVEDConfigTest extends \PHPUnit_Framework_TestCase
+class MidtransConfigTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testReturnBaseUrl()

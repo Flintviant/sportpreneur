@@ -1,8 +1,8 @@
 <?php
 
-namespace REMOVED;
+namespace Midtrans;
 
-class REMOVEDSnapTest extends \PHPUnit_Framework_TestCase
+class MidtransSnapTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testGetSnapToken()

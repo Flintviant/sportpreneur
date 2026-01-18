@@ -3,9 +3,9 @@
 // Please refer to this docs:
 // https://docs.midtrans.com/en/core-api/credit-card?id=_1-getting-the-card-token
 
-namespace REMOVED;
+namespace Midtrans;
 
-require_once dirname(__FILE__) . '/../../REMOVED.php';
+require_once dirname(__FILE__) . '/../../Midtrans.php';
 // Set Your server key
 // can find in Merchant Portal -> Settings -> Access keys
 Config::$clientKey = '<your client key>';
@@ -151,7 +151,7 @@ function printExampleWarningMessage() {
                 $(this).attr("disabled", "disabled");
 
                 console.log('1. get token_id');
-                REMOVEDNew3ds.getCardToken(card, getCardTokenCallback);
+                MidtransNew3ds.getCardToken(card, getCardTokenCallback);
                 return false;
             });
 
@@ -178,7 +178,7 @@ function printExampleWarningMessage() {
                             console.log('3. response charge from backend:', response);
                             if (response.redirect_url){
                                 console.log('4. open redirect_url');
-                                REMOVEDNew3ds.authenticate(response.redirect_url, options);
+                                MidtransNew3ds.authenticate(response.redirect_url, options);
                             }
                         },
                         error: function(xhr, status, error){

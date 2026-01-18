@@ -1,7 +1,7 @@
 <?php
-namespace REMOVED;
+namespace Midtrans;
 
-class REMOVEDTransactionTest extends \PHPUnit_Framework_TestCase
+class MidtransTransactionTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testStatus()
@@ -67,7 +67,7 @@ class REMOVEDTransactionTest extends \PHPUnit_Framework_TestCase
             $status = Transaction::status("Order-111");
         } catch (\Exception $error) {
             $errorHappen = true;
-            $this->assertContains("REMOVED API is returning API error. HTTP status code: 401", $error->getMessage());
+            $this->assertContains("Midtrans API is returning API error. HTTP status code: 401", $error->getMessage());
         }
 
         $this->assertTrue($errorHappen);

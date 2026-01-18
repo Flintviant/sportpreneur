@@ -1,9 +1,9 @@
 <?php
 // This is just for very basic implementation reference, in production, you should validate the incoming requests and implement your backend more securely.
 
-namespace REMOVED;
+namespace Midtrans;
 
-require_once dirname(__FILE__) . '/../../REMOVED.php';
+require_once dirname(__FILE__) . '/../../Midtrans.php';
 // Set Your server key
 // can find in Merchant Portal -> Settings -> Access keys
 Config::$serverKey = '<your server key>';
@@ -12,7 +12,7 @@ Config::$serverKey = '<your server key>';
 printExampleWarningMessage();
 
 $orderId = '<your order id / transaction id>';
-// Get transaction status to REMOVED API
+// Get transaction status to Midtrans API
 $status = '';
 try {
     $status = Transaction::status($orderId);

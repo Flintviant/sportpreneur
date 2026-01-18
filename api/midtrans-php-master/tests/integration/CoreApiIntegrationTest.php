@@ -1,9 +1,9 @@
 <?php
 
-namespace REMOVED\integration;
+namespace Midtrans\integration;
 
-use REMOVED\CoreApi;
-use REMOVED\utility\MtChargeFixture;
+use Midtrans\CoreApi;
+use Midtrans\utility\MtChargeFixture;
 
 require_once 'IntegrationTest.php';
 
@@ -194,7 +194,7 @@ class CoreApiIntegrationTest extends IntegrationTest
         try {
             $this->charge_response = CoreApi::getSubscription("dummy");
         } catch (\Exception $e) {
-            $this->assertContains("REMOVED API is returning API error.", $e->getMessage());
+            $this->assertContains("Midtrans API is returning API error.", $e->getMessage());
         }
     }
 
@@ -203,7 +203,7 @@ class CoreApiIntegrationTest extends IntegrationTest
         try {
             $this->charge_response = CoreApi::disableSubscription("dummy");
         } catch (\Exception $e) {
-            $this->assertContains("REMOVED API is returning API error.", $e->getMessage());
+            $this->assertContains("Midtrans API is returning API error.", $e->getMessage());
         }
     }
 
@@ -212,7 +212,7 @@ class CoreApiIntegrationTest extends IntegrationTest
         try {
             $this->charge_response = CoreApi::enableSubscription("dummy");
         } catch (\Exception $e) {
-            $this->assertContains("REMOVED API is returning API error.", $e->getMessage());
+            $this->assertContains("Midtrans API is returning API error.", $e->getMessage());
         }
     }
 
@@ -231,7 +231,7 @@ class CoreApiIntegrationTest extends IntegrationTest
         try {
             $this->charge_response = CoreApi::updateSubscription("dummy", $param);
         } catch (\Exception $e) {
-            $this->assertContains("REMOVED API is returning API error.", $e->getMessage());
+            $this->assertContains("Midtrans API is returning API error.", $e->getMessage());
         }
     }
 
@@ -267,7 +267,7 @@ class CoreApiIntegrationTest extends IntegrationTest
         try {
             $this->charge_response = CoreApi::getPaymentAccount("dummy");
         } catch (\Exception $e) {
-            $this->assertContains("REMOVED API is returning API error.", $e->getMessage());
+            $this->assertContains("Midtrans API is returning API error.", $e->getMessage());
         }
     }
 
