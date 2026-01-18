@@ -31,7 +31,7 @@ if (substr($phone, 0, 1) === '0') {
     $phone = '62' . substr($phone, 1);
 }
 
-require_once 'api/midtrans-php-master/REMOVED.php';
+require_once 'api/midtrans-php-master/Midtrans.php';
 
     $stmt = $conn->prepare("
         SELECT server_key, is_production, is_sanitized, is_3ds
@@ -43,16 +43,16 @@ require_once 'api/midtrans-php-master/REMOVED.php';
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        die('Konfigurasi REMOVED belum diset');
+        die('Konfigurasi Midtrans belum diset');
     }
 
     $config = $result->fetch_assoc();
 
     // set config midtrans
-    \REMOVED\Config::$serverKey    = $config['server_key'];
-    \REMOVED\Config::$isProduction = (bool)$config['is_production'];
-    \REMOVED\Config::$isSanitized  = (bool)$config['is_sanitized'];
-    \REMOVED\Config::$is3ds        = (bool)$config['is_3ds'];
+    \Midtrans\Config::$serverKey    = $config['server_key'];
+    \Midtrans\Config::$isProduction = (bool)$config['is_production'];
+    \Midtrans\Config::$isSanitized  = (bool)$config['is_sanitized'];
+    \Midtrans\Config::$is3ds        = (bool)$config['is_3ds'];
 
 if (empty($_SESSION['cart'])) {
     http_response_code(400);
@@ -163,7 +163,7 @@ try {
 }
 
 try {
-    $snapToken = \REMOVED\Snap::getSnapToken($params);
+    $snapToken = \Midtrans\Snap::getSnapToken($params);
     echo json_encode([
         'token' => $snapToken,
         'order_id' => $order_id
