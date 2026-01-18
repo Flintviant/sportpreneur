@@ -5,7 +5,7 @@
 // 	echo '<pre>';
 // print_r($_SESSION);
 // exit;
-
+	$id_member = $_SESSION['id_member'] ?? null;
 
 	$cart = $_SESSION['cart'] ?? [];
 	$subtotal = 0;
@@ -21,6 +21,22 @@
 	$produk = [];
 	while ($row = $sql->fetch_assoc()) {
 	    $produk[] = $row; // ambil semua kolom
+	}
+
+	if ($id_member) {
+	    $stmt = $conn->prepare(
+	        "SELECT nm_member, telepon, alamat_member, kode_pos FROM member WHERE id_member = ?"
+	    );
+	    $stmt->bind_param("i", $id_member);
+	    $stmt->execute();
+	    $result = $stmt->get_result();
+
+	    if ($row = $result->fetch_assoc()) {
+	        $phone = $row['telepon'];
+	        $nama  = $row['nm_member'];
+	        $address  = $row['alamat_member'];
+	        $postal  = $row['kode_pos'];
+	    }
 	}
 ?>
 
@@ -59,207 +75,114 @@
 	
 	<!-- Header -->
 	<header class="header-v4">
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
 
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
+	    <!-- ================= HEADER DESKTOP ================= -->
+	    <div class="container-menu-desktop">
+	        <div class="wrap-menu-desktop how-shadow1">
+	            <nav class="limiter-menu-desktop container">
 
-						<a href="profile" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
+	                <!-- Logo -->
+	                <a href="<?= $url_utama ?>" class="logo">
+	                    <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+	                </a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
+	                <!-- Menu Desktop -->
+	                <div class="menu-desktop">
+	                    <ul class="main-menu">
+	                        <li><a href="<?= $url_utama ?>">Home</a></li>
+	                        <li class="active-menu"><a href="/product">Shop</a></li>
+	                        <li><a href="/blog">Blog</a></li>
+	                        <li><a href="/about">About</a></li>
+	                        <li><a href="/contact">Contact</a></li>
+	                    </ul>
+	                </div>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
-					</div>
-				</div>
-			</div>
+	                <!-- Icon Header -->
+	                <div class="wrap-icon-header flex-w flex-r-m">
+	                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+	                        <i class="zmdi zmdi-account"></i>
+	                    </div>
 
-			<div class="wrap-menu-desktop how-shadow1">
-				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
-					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
+	                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+	                        <span class="icon-header-noti" id="cart-count"></span>
+	                        <i class="zmdi zmdi-shopping-cart"></i>
+	                    </div>
 
-					<!-- Menu desktop -->
-					<div class="menu-desktop">
-						<ul class="main-menu">
-							<li>
-								<a href="/">Home</a>
-								<ul class="sub-menu">
-									<li><a href="/">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
-							</li>
+	                    <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout">
+	                        <i class="zmdi zmdi-power"></i>
+	                    </a>
+	                </div>
 
-							<li>
-								<a href="product">Shop</a>
-							</li>
+	            </nav>
+	        </div>
+	    </div>
 
-							<li class="label1" data-label1="hot">
-								<a href="#">Features</a>
-							</li>
+	    <!-- ================= HEADER MOBILE ================= -->
+	    <div class="wrap-header-mobile">
 
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
-							<li>
-								<a href="about.html">About</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
-						</ul>
-					</div>	
-
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-
-						<a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout1">
-			              <i class="zmdi zmdi-power"></i>
-			            </a>
-					</div>
-				</nav>
-			</div>	
-		</div>
-
-		<!-- Header Mobile -->
-		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
-			<div class="logo-mobile">
-				<a href="/"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
-			</div>
-
-			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
-
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout2">
-	              <i class="zmdi zmdi-power"></i>
+	        <!-- Logo Mobile -->
+	        <div class="logo-mobile">
+	            <a href="<?= $url_utama ?>">
+	                <img src="images/icons/logo-01.png" alt="IMG-LOGO">
 	            </a>
-			</div>
+	        </div>
 
-			<!-- Button show menu -->
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
-			</div>
-		</div>
+	        <!-- Icon Mobile -->
+	        <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+	                <i class="zmdi zmdi-account"></i>
+	            </div>
 
+	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+	                <span class="icon-header-noti" id="cart-count"></span>
+	                <i class="zmdi zmdi-shopping-cart"></i>
+	            </div>
 
-		<!-- Menu Mobile -->
-		<div class="menu-mobile">
-			<ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-				</li>
+	            <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout2">
+	                <i class="zmdi zmdi-power"></i>
+	            </a>
+	        </div>
 
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
+	        <!-- Button Menu Mobile -->
+	        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+	            <span class="hamburger-box">
+	                <span class="hamburger-inner"></span>
+	            </span>
+	        </div>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
-						</a>
+	    </div>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
-						</a>
+	    <!-- ================= MENU MOBILE ================= -->
+	    <div class="menu-mobile">
+	        <ul class="main-menu-m">
+	            <li><a href="<?= $url_utama ?>">Home</a></li>
+	            <li><a href="/product">Shop</a></li>
+	            <li><a href="/blog">Blog</a></li>
+	            <li><a href="/about">About</a></li>
+	            <li><a href="/contact">Contact</a></li>
+	        </ul>
+	    </div>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
-						</a>
-					</div>
-				</li>
-			</ul>
+	    <!-- ================= MODAL SEARCH ================= -->
+	    <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+	        <div class="container-search-header">
 
-			<ul class="main-menu-m">
-				<li>
-					<a href="index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
-				</li>
+	            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+	                <img src="images/icons/icon-close2.png" alt="CLOSE">
+	            </button>
 
-				<li>
-					<a href="product">Shop</a>
-				</li>
+	            <form class="wrap-search-header flex-w p-l-15">
+	                <button class="flex-c-m trans-04">
+	                    <i class="zmdi zmdi-search"></i>
+	                </button>
+	                <input class="plh3" type="text" name="search" placeholder="Search...">
+	            </form>
 
-				<li>
-					<a href="#" class="label1 rs1" data-label1="hot">Features</a>
-				</li>
+	        </div>
+	    </div>
 
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
-
-				<li>
-					<a href="about.html">About</a>
-				</li>
-
-				<li>
-					<a href="contact.html">Contact</a>
-				</li>
-			</ul>
-		</div>
-
-		<!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
-				</form>
-			</div>
-		</div>
 	</header>
+
 
 	<!-- Cart -->
 	<div class="wrap-header-cart js-panel-cart">
@@ -350,9 +273,9 @@
 								</div>
 							</div>
 
-							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+							<!-- <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
 								Update Cart
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -380,16 +303,28 @@
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
 								<span class="stext-110 cl2">
-									Shipping:
+									Penerima:
 								</span>
 							</div>
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 								<p class="stext-111 cl6 p-t-2">
-									There are no shipping methods available. Please double check your address, or contact us if you need any help.
+									<?=$nama?>
+								</p>
+
+								<p class="stext-111 cl6 p-t-2">
+									<?=$phone?>
+								</p>
+
+								<p class="stext-111 cl6 p-t-2">
+									<?=$address?>
+								</p>
+
+								<p class="stext-111 cl6 p-t-2">
+									<?=$postal?>
 								</p>
 								
-								<div class="p-t-15">
+								<!-- <div class="p-t-15">
 									<span class="stext-112 cl8">
 										Calculate Shipping
 									</span>
@@ -417,7 +352,7 @@
 										</div>
 									</div>
 										
-								</div>
+								</div> -->
 							</div>
 						</div>
 
@@ -750,6 +685,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		                snap.pay(data.token, {
 		                    onSuccess: function (result) {
 		                        console.log('SUCCESS', result);
+		                        fetch('clear_cart.php', { method: 'POST' });
 		                        window.location.href = 'product.php';
 		                    },
 		                    onPending: function (result) {

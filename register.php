@@ -47,8 +47,8 @@ try {
 
     // insert login
     $stmt2 = $conn->prepare(
-        "INSERT INTO login (user, pass, id_member)
-         VALUES (?, ?, ?)"
+        "INSERT INTO login (user, pass, id_member, id_role)
+         VALUES (?, ?, ?, 2)"
     );
     $stmt2->bind_param("ssi", $username, $hashed, $id_member);
     $stmt2->execute();
