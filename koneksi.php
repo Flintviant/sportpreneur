@@ -26,6 +26,6 @@ $conn->set_charset("utf8mb4");
 // $url_admin = 'http://sportshop.test/admin/';
 // $url_utama = 'http://sportshop.test/';
 
-$url_admin = 'http://sportpreneur.id/admin/';
-$url_utama = 'http://sportpreneur.id/';
+$url_admin = 'https://sportpreneur.id/admin/';
+$url_utama = 'https://sportpreneur.id/';
 ?>
