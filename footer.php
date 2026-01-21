@@ -1,148 +1,45 @@
-<!-- Footer -->
+	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Categories
-					</h4>
+	  <div class="container">
+	    <div class="row footer-row">
 
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
-							</a>
-						</li>
+	      <div class="col-sm-6 col-lg-3 footer-col">
+	        <img src="<?=$url_utama?>images/logo-sport.png" class="footer-logo">
+	      </div>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
+	      <div class="col-sm-6 col-lg-3 footer-col">
+	        <h4 class="stext-301 cl0 p-b-20">
+	          GET IN TOUCH
+	        </h4>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
+	        <p class="stext-107 cl7">
+	          Any questions? call us on <br> (+62) 812-3456-789
+	        </p>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
-					</ul>
-				</div>
+	        <div class="p-t-20">
+	          <a href="https://facebook.com/sportpreneurid/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+	            <i class="fa fa-facebook"></i>
+	          </a>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
+	          <a href="https://instagram.com/sportpreneurid/" class="fs-18 cl7 hov-cl1 trans-04">
+	            <i class="fa fa-instagram"></i>
+	          </a>
+	        </div>
+	      </div>
 
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
+	      <div class="col-sm-12 col-lg-6 footer-col footer-copy">
+	        <p class="stext-107 cl6">
+	          Copyright &copy;
+	          <script>document.write(new Date().getFullYear());</script>
+	          All rights reserved | Made with
+	          <i class="fa fa-heart-o"></i>
+	          by <br> <a href="https://sportpreneur.id" target="_blank">Sportpreneur Indonesia Berdampak</a>
+	        </p>
+	      </div>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns 
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
-					</h4>
-
-					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-					</p>
-
-					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
-					</h4>
-
-					<form>
-						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-							<div class="focus-input1 trans-04"></div>
-						</div>
-
-						<div class="p-t-18">
-							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
-					</a>
-				</div>
-
-				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-				</p>
-			</div>
-		</div>
+	    </div>
+	  </div>
 	</footer>
-
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -152,7 +49,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</div>
 
 	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+	<!-- <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
 		<div class="overlay-modal1 js-hide-modal1"></div>
 
 		<div class="container">
@@ -217,7 +114,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
 							
-							<!--  -->
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
 									<div class="size-203 flex-c-m respon6">
@@ -278,7 +174,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								</div>	
 							</div>
 
-							<!--  -->
 							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
 									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
@@ -303,7 +198,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -443,6 +338,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		            body: JSON.stringify({
 		                id: btn.dataset.id,
 		                nama: btn.dataset.nama,
+		                foto: btn.dataset.foto,
 		                harga: btn.dataset.harga
 		            })
 		        }).then(() => renderCart());
@@ -471,7 +367,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		renderCart();
 	</script>
 
-	<script>
+	<!-- <script>
 		document.getElementById("signout").addEventListener("click", function() {
 			if (confirm("Yakin ingin keluar dari akun?")) {
 			  window.location.href = "logout.php"; // arahkan ke file logout PHP
@@ -483,6 +379,116 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	          window.location.href = "logout.php"; // arahkan ke file logout PHP
 	        }
 	   	});
+    </script> -->
+
+    <script>
+    	document.addEventListener('click', function (e) {
+		  const btn = e.target.closest('.icon-header-item');
+		  if (!btn) return;
+
+		  if (btn.id === 'signout') {
+		    e.preventDefault();
+
+		    // optional confirm
+		    if (!confirm('Yakin ingin logout?')) return;
+
+		    window.location.href = '/logout.php';
+		  }
+		});
+
     </script>
+
+    <script>
+	  const counters = document.querySelectorAll('.impact-card h4');
+
+	  const runCounter = (counter) => {
+	    const target = +counter.getAttribute('data-target');
+	    const duration = 1800; // ms
+	    const startTime = performance.now();
+
+	    const update = (currentTime) => {
+	      const elapsed = currentTime - startTime;
+	      const progress = Math.min(elapsed / duration, 1);
+	      const value = Math.floor(progress * target);
+
+	      counter.textContent = value + '+';
+
+	      if (progress < 1) {
+	        requestAnimationFrame(update);
+	      }
+	    };
+
+	    requestAnimationFrame(update);
+	  };
+
+	  const observer = new IntersectionObserver(
+	    entries => {
+	      entries.forEach(entry => {
+	        if (entry.isIntersecting) {
+	          runCounter(entry.target);
+	          observer.unobserve(entry.target);
+	        }
+	      });
+	    },
+	    { threshold: 0.5 }
+	  );
+
+	  counters.forEach(counter => observer.observe(counter));
+	</script>
+
+	<script>
+		document.addEventListener("scroll", () => {
+		  document.querySelectorAll(".sport-item").forEach((el, i) => {
+		    el.style.transform =
+		      `translateY(${window.scrollY * (0.05 + i * 0.01)}px)`;
+		  });
+		});
+	</script>
+
+	<script>
+	document.getElementById('profileForm').addEventListener('submit', function(e) {
+	  e.preventDefault();
+
+	  const form = this;
+	  const msg  = document.getElementById('profileMsg');
+	  const btn  = form.querySelector('button');
+
+	  btn.disabled = true;
+	  btn.innerText = 'Updating...';
+
+	  fetch('update_profile.php', {
+	    method: 'POST',
+	    body: new FormData(form)
+	  })
+	  .then(res => res.json())
+	  .then(data => {
+	    if (data.status === 'success') {
+	      msg.innerHTML = `
+	        <div class="alert alert-success">
+	          ✅ Profil berhasil diperbarui
+	        </div>
+	      `;
+	    } else {
+	      msg.innerHTML = `
+	        <div class="alert alert-danger">
+	          ❌ ${data.message}
+	        </div>
+	      `;
+	    }
+	  })
+	  .catch(() => {
+	    msg.innerHTML = `
+	      <div class="alert alert-danger">
+	        ❌ Terjadi kesalahan
+	      </div>
+	    `;
+	  })
+	  .finally(() => {
+	    btn.disabled = false;
+	    btn.innerText = 'Update Data';
+	  });
+	});
+	</script>
+
 </body>
 </html>

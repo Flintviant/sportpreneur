@@ -165,6 +165,38 @@
             });
         });
             
-                
+        /*==================================================================
+        [ Slick4 ]*/
+        $('.partner-slider').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            autoplay: true,
+            autoplaySpeed: 2500,
+            infinite: true,
+            pauseOnHover: true,
+            responsive: [
+              {
+                breakpoint: 1200,
+                settings: {
+                  slidesToShow: 4
+                }
+              },
+              {
+                breakpoint: 992,
+                settings: {
+                  slidesToShow: 3
+                }
+              },
+              {
+                breakpoint: 576,
+                settings: {
+                  slidesToShow: 2
+                }
+              }
+            ]
+        });
+
 
 })(jQuery);

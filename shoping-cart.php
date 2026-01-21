@@ -25,7 +25,7 @@
 
 	if ($id_member) {
 	    $stmt = $conn->prepare(
-	        "SELECT nm_member, telepon, alamat_member, kode_pos FROM member WHERE id_member = ?"
+	        "SELECT nm_member, telepon, alamat_member, kode_pos, email FROM member WHERE id_member = ?"
 	    );
 	    $stmt->bind_param("i", $id_member);
 	    $stmt->execute();
@@ -36,6 +36,7 @@
 	        $nama  = $row['nm_member'];
 	        $address  = $row['alamat_member'];
 	        $postal  = $row['kode_pos'];
+	        $email  = $row['email'];
 	    }
 	}
 ?>
@@ -83,7 +84,7 @@
 
 	                <!-- Logo -->
 	                <a href="<?= $url_utama ?>" class="logo">
-	                    <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+	                    <img src="images/logo-sport-nav.png" alt="logo-sportpreneur">
 	                </a>
 
 	                <!-- Menu Desktop -->
@@ -92,65 +93,61 @@
 	                        <li><a href="<?= $url_utama ?>">Home</a></li>
 	                        <li class="active-menu"><a href="/product">Shop</a></li>
 	                        <li><a href="/blog">Blog</a></li>
-	                        <li><a href="/about">About</a></li>
 	                        <li><a href="/contact">Contact</a></li>
 	                    </ul>
 	                </div>
 
-	                <!-- Icon Header -->
-	                <div class="wrap-icon-header flex-w flex-r-m">
-	                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-	                        <i class="zmdi zmdi-account"></i>
-	                    </div>
+	                <!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+							<i class="zmdi zmdi-account"></i>
+						</div>
 
-	                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
-	                        <span class="icon-header-noti" id="cart-count"></span>
-	                        <i class="zmdi zmdi-shopping-cart"></i>
-	                    </div>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+							<span class="icon-header-noti" id="cart-count"></span>
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
 
-	                    <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout">
-	                        <i class="zmdi zmdi-power"></i>
-	                    </a>
-	                </div>
+			            <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout">
+						  <i class="zmdi zmdi-power"></i>
+						</a>
+
+					</div>
 
 	            </nav>
 	        </div>
 	    </div>
 
-	    <!-- ================= HEADER MOBILE ================= -->
-	    <div class="wrap-header-mobile">
+	    <!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="<?=$url_utama?>"><img src="images/logo-sport-nav.png" alt="logo-sportpreneur"></a>
+			</div>
 
-	        <!-- Logo Mobile -->
-	        <div class="logo-mobile">
-	            <a href="<?= $url_utama ?>">
-	                <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+					<i class="zmdi zmdi-account"></i>
+				</div>
+
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
+					<span class="icon-header-noti" id="cart-count"></span>
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+
+				<a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout2">
+	              <i class="zmdi zmdi-power"></i>
 	            </a>
-	        </div>
+			</div>
 
-	        <!-- Icon Mobile -->
-	        <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-	                <i class="zmdi zmdi-account"></i>
-	            </div>
-
-	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
-	                <span class="icon-header-noti" id="cart-count"></span>
-	                <i class="zmdi zmdi-shopping-cart"></i>
-	            </div>
-
-	            <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout2">
-	                <i class="zmdi zmdi-power"></i>
-	            </a>
-	        </div>
-
-	        <!-- Button Menu Mobile -->
-	        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-	            <span class="hamburger-box">
-	                <span class="hamburger-inner"></span>
-	            </span>
-	        </div>
-
-	    </div>
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
 
 	    <!-- ================= MENU MOBILE ================= -->
 	    <div class="menu-mobile">
@@ -158,28 +155,77 @@
 	            <li><a href="<?= $url_utama ?>">Home</a></li>
 	            <li><a href="/product">Shop</a></li>
 	            <li><a href="/blog">Blog</a></li>
-	            <li><a href="/about">About</a></li>
 	            <li><a href="/contact">Contact</a></li>
 	        </ul>
 	    </div>
 
-	    <!-- ================= MODAL SEARCH ================= -->
-	    <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-	        <div class="container-search-header">
+	    <!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+		  <div class="container-search-header">
 
-	            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-	                <img src="images/icons/icon-close2.png" alt="CLOSE">
-	            </button>
+		    <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+		      <img src="<?=$url_utama?>images/icons/icon-close2.png" alt="CLOSE">
+		    </button>
 
-	            <form class="wrap-search-header flex-w p-l-15">
-	                <button class="flex-c-m trans-04">
-	                    <i class="zmdi zmdi-search"></i>
-	                </button>
-	                <input class="plh3" type="text" name="search" placeholder="Search...">
-	            </form>
+		    <?php 
+		    	$isLogin = isset($_SESSION['id_member']);
+		     	if ($isLogin): 
+		    ?>
+			    <!-- ================= USER SUDAH LOGIN ================= -->
+			    <form id="profileForm" class="profile-form elegant-form">
 
-	        </div>
-	    </div>
+				 	<input type="hidden" name="id_member" value="<?= $_SESSION['id_member'] ?>">
+
+					<div class="form-group">
+				    <label>Nama</label>
+				    <input type="text" name="nm_member" value="<?= htmlspecialchars($nama) ?>" required>
+					</div>
+
+					<div class="form-group">
+				    <label>Email</label>
+				    <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
+					</div>
+
+					<div class="form-group">
+				    <label>Alamat</label>
+				    <textarea name="alamat_member" rows="3" required><?= htmlspecialchars($address) ?></textarea>
+					</div>
+
+					<div class="form-group">
+				    	<label>Nomor Handphone</label>
+				    	<input type="text" name="telepon" value="<?= htmlspecialchars($phone) ?>" required>
+				  	</div>
+
+					<button type="submit" class="btn-update">
+				    	Update Data
+				  	</button>
+
+				  	<div id="profileMsg" class="form-message"></div>
+
+				</form>
+
+		    <?php else: ?>
+		    <!-- ================= USER BELUM LOGIN ================= -->
+		    <div class="text-center p-4">
+
+		      <h4 class="mb-3">Login Diperlukan</h4>
+		      <p class="text-muted">
+		        Silakan login terlebih dahulu untuk melihat dan mengubah profil Anda.
+		      </p>
+
+		      <a href="login.php" class="btn btn-dark w-100 mb-2">
+		        Login
+		      </a>
+
+		      <a href="register.php" class="btn btn-outline-dark w-100">
+		        Daftar Akun
+		      </a>
+
+		    </div>
+		    <?php endif; ?>
+
+		  </div>
+		</div>
 
 	</header>
 
@@ -210,10 +256,6 @@
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<!-- <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
-						</a> -->
-
 						<a href="shoping-cart.php" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
@@ -317,6 +359,10 @@
 								</p>
 
 								<p class="stext-111 cl6 p-t-2">
+									<?=$email?>
+								</p>
+
+								<p class="stext-111 cl6 p-t-2">
 									<?=$address?>
 								</p>
 
@@ -383,149 +429,46 @@
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Categories
-					</h4>
+	  	<div class="container">
+		    <div class="row footer-row">
 
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
-							</a>
-						</li>
+		      <div class="col-sm-6 col-lg-3 footer-col">
+		        <img src="<?=$url_utama?>images/logo-sport.png" class="footer-logo">
+		      </div>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
+		      <div class="col-sm-6 col-lg-3 footer-col">
+		        <h4 class="stext-301 cl0 p-b-20">
+		          GET IN TOUCH
+		        </h4>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
+		        <p class="stext-107 cl7">
+		          Any questions? call us on <br> (+62) 812-3456-789
+		        </p>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
-					</ul>
-				</div>
+		        <div class="p-t-20">
+		          <a href="https://facebook.com/sportpreneurid/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+		            <i class="fa fa-facebook"></i>
+		          </a>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
+		          <a href="https://instagram.com/sportpreneurid/" class="fs-18 cl7 hov-cl1 trans-04">
+		            <i class="fa fa-instagram"></i>
+		          </a>
+		        </div>
+		      </div>
 
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
+		      <div class="col-sm-12 col-lg-6 footer-col footer-copy">
+		        <p class="stext-107 cl6">
+		          Copyright &copy;
+		          <script>document.write(new Date().getFullYear());</script>
+		          All rights reserved | Made with
+		          <i class="fa fa-heart-o"></i>
+		          by <br> <a href="https://sportpreneur.id" target="_blank">Sportpreneur Indonesia Berdampak</a>
+		        </p>
+		      </div>
 
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns 
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
-					</h4>
-
-					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-					</p>
-
-					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
-					</h4>
-
-					<form>
-						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-							<div class="focus-input1 trans-04"></div>
-						</div>
-
-						<div class="p-t-18">
-							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
-					</a>
-				</div>
-
-				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-				</p>
-			</div>
+		    </div>
 		</div>
 	</footer>
-
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -574,7 +517,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/main.js"></script>
 
 	<script>
-		document.getElementById("signout1").addEventListener("click", function() {
+		document.getElementById("signout").addEventListener("click", function() {
 	        if (confirm("Yakin ingin keluar dari akun?")) {
 	          window.location.href = "logout.php"; // arahkan ke file logout PHP
 	        }
@@ -638,6 +581,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		            body: JSON.stringify({
 		                id: btn.dataset.id,
 		                nama: btn.dataset.nama,
+		                foto: btn.dataset.foto,
 		                harga: btn.dataset.harga
 		            })
 		        }).then(() => renderCart());
@@ -704,6 +648,50 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		});
 	</script>
 
+	<script>
+		document.getElementById('profileForm').addEventListener('submit', function(e) {
+		  e.preventDefault();
+
+		  const form = this;
+		  const msg  = document.getElementById('profileMsg');
+		  const btn  = form.querySelector('button');
+
+		  btn.disabled = true;
+		  btn.innerText = 'Updating...';
+
+		  fetch('update_profile.php', {
+		    method: 'POST',
+		    body: new FormData(form)
+		  })
+		  .then(res => res.json())
+		  .then(data => {
+		    if (data.status === 'success') {
+		      msg.innerHTML = `
+		        <div class="alert alert-success">
+		          ✅ Profil berhasil diperbarui
+		        </div>
+		      `;
+		    } else {
+		      msg.innerHTML = `
+		        <div class="alert alert-danger">
+		          ❌ ${data.message}
+		        </div>
+		      `;
+		    }
+		  })
+		  .catch(() => {
+		    msg.innerHTML = `
+		      <div class="alert alert-danger">
+		        ❌ Terjadi kesalahan
+		      </div>
+		    `;
+		  })
+		  .finally(() => {
+		    btn.disabled = false;
+		    btn.innerText = 'Update Data';
+		  });
+		});
+	</script>
 
 </body>
 </html>

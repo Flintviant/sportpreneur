@@ -1,6 +1,26 @@
 <?php
 	include 'koneksi.php';
 
+	require_once __DIR__ . '/session_modal.php';
+
+	$id_member = $_SESSION['id_member'] ?? null;
+
+	if ($id_member) {
+	    $stmt = $conn->prepare(
+	        "SELECT nm_member, telepon, alamat_member, email FROM member WHERE id_member = ?"
+	    );
+	    $stmt->bind_param("i", $id_member);
+	    $stmt->execute();
+	    $result = $stmt->get_result();
+
+	    if ($row = $result->fetch_assoc()) {
+	        $phone = $row['telepon'];
+	        $nama  = $row['nm_member'];
+	        $address  = $row['alamat_member'];
+	        $email	= $row['email'];
+	    }
+	}
+
 	$sql = $conn->query("SELECT * FROM barang");
 
 	if (!$sql) {
@@ -63,7 +83,7 @@
 
 	                <!-- Logo -->
 	                <a href="<?= $url_utama ?>" class="logo">
-	                    <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+	                    <img src="images/logo-sport-nav.png" alt="logo-sportpreneur">
 	                </a>
 
 	                <!-- Menu Desktop -->
@@ -72,7 +92,7 @@
 	                        <li><a href="<?= $url_utama ?>">Home</a></li>
 	                        <li class="active-menu"><a href="/product">Shop</a></li>
 	                        <li><a href="/blog">Blog</a></li>
-	                        <li><a href="/about">About</a></li>
+	                        <!-- <li><a href="/about">About</a></li> -->
 	                        <li><a href="/contact">Contact</a></li>
 	                    </ul>
 	                </div>
@@ -103,7 +123,7 @@
 	        <!-- Logo Mobile -->
 	        <div class="logo-mobile">
 	            <a href="<?= $url_utama ?>">
-	                <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+	                <img src="images/logo-sport-nav.png" alt="logo-sportpreneur">
 	            </a>
 	        </div>
 
@@ -118,7 +138,7 @@
 	                <i class="zmdi zmdi-shopping-cart"></i>
 	            </div>
 
-	            <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout2">
+	            <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout">
 	                <i class="zmdi zmdi-power"></i>
 	            </a>
 	        </div>
@@ -138,28 +158,78 @@
 	            <li><a href="<?= $url_utama ?>">Home</a></li>
 	            <li><a href="/product">Shop</a></li>
 	            <li><a href="/blog">Blog</a></li>
-	            <li><a href="/about">About</a></li>
+	            <!-- <li><a href="/about">About</a></li> -->
 	            <li><a href="/contact">Contact</a></li>
 	        </ul>
 	    </div>
 
-	    <!-- ================= MODAL SEARCH ================= -->
-	    <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-	        <div class="container-search-header">
+	    <!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+		  <div class="container-search-header">
 
-	            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-	                <img src="images/icons/icon-close2.png" alt="CLOSE">
-	            </button>
+		    <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+		      <img src="images/icons/icon-close2.png" alt="CLOSE">
+		    </button>
 
-	            <form class="wrap-search-header flex-w p-l-15">
-	                <button class="flex-c-m trans-04">
-	                    <i class="zmdi zmdi-search"></i>
-	                </button>
-	                <input class="plh3" type="text" name="search" placeholder="Search...">
-	            </form>
+		    <?php 
+		    	$isLogin = isset($_SESSION['id_member']);
+		     	if ($isLogin): 
+		    ?>
+			    <!-- ================= USER SUDAH LOGIN ================= -->
+			    <form id="profileForm" class="profile-form elegant-form">
 
-	        </div>
-	    </div>
+				 	<input type="hidden" name="id_member" value="<?= $_SESSION['id_member'] ?>">
+
+					<div class="form-group">
+				    <label>Nama</label>
+				    <input type="text" name="nm_member" value="<?= htmlspecialchars($nama) ?>" required>
+					</div>
+
+					<div class="form-group">
+				    <label>Email</label>
+				    <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
+					</div>
+
+					<div class="form-group">
+				    <label>Alamat</label>
+				    <textarea name="alamat_member" rows="3" required><?= htmlspecialchars($address) ?></textarea>
+					</div>
+
+					<div class="form-group">
+				    	<label>Nomor Handphone</label>
+				    	<input type="text" name="telepon" value="<?= htmlspecialchars($phone) ?>" required>
+				  	</div>
+
+					<button type="submit" class="btn-update">
+				    	Update Data
+				  	</button>
+
+				  	<div id="profileMsg" class="form-message"></div>
+
+				</form>
+
+		    <?php else: ?>
+		    <!-- ================= USER BELUM LOGIN ================= -->
+		    <div class="text-center p-4">
+
+		      <h4 class="mb-3">Login Diperlukan</h4>
+		      <p class="text-muted">
+		        Silakan login terlebih dahulu untuk melihat dan mengubah profil Anda.
+		      </p>
+
+		      <a href="login.php" class="btn btn-dark w-100 mb-2">
+		        Login
+		      </a>
+
+		      <a href="register.php" class="btn btn-outline-dark w-100">
+		        Daftar Akun
+		      </a>
+
+		    </div>
+		    <?php endif; ?>
+
+		  </div>
+		</div>
 
 	</header>
 
@@ -207,245 +277,13 @@
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
-					</button>
+				<img src="<?=$url_utama?>images/banner-shop.png" style="width: 100%;border-radius: 10%;">
+			</div>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
-					</button>
-				</div>
-
-				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
-					</div>
-
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Search
-					</div>
-				</div>
-				
-				<!-- Search product -->
-				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-					</div>	
-				</div>
-
-				<!-- Filter -->
-				<div class="dis-none panel-filter w-full p-t-10">
-					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Sort By
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Default
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: Low to High
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: High to Low
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col2 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Price
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$0.00 - $50.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$50.00 - $100.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$100.00 - $150.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$150.00 - $200.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$200.00+
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col3 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Color
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Black
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Blue
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Grey
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Green
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Red
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-										<i class="zmdi zmdi-circle-o"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										White
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<div class="filter-col4 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Tags
-							</div>
-
-							<div class="flex-w p-t-4 m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="mtext-107 cl2 size-114 plh2 mb-5 text-center">
+				<h2 class="ltext-103 redefine-title text-center">
+					Produk Kami
+				</h2>	
 			</div>
 
 			<div class="row isotope-grid">
@@ -455,7 +293,7 @@
 
 				    <!-- Gambar Produk -->
 				    <div class="block2-pic hov-img0">
-				      <img src="images/product-01.jpg" alt="<?= htmlspecialchars($produk['nama_barang']) ?>">
+				      <img src="images/<?= htmlspecialchars($produk['foto_produk']) ?>" alt="<?= htmlspecialchars($produk['nama_barang']) ?>">
 				    </div>
 
 				    <!-- Info Produk -->
@@ -474,6 +312,7 @@
 				         class="btn-add-cart add-cart"
 				         data-id="<?= $produk['id_barang'] ?>"
 				         data-nama="<?= htmlspecialchars($produk['nama_barang']) ?>"
+				         data-foto="<?= htmlspecialchars($produk['foto_produk']) ?>"
 				         data-harga="<?= $produk['harga_jual'] ?>">
 				         <i class="zmdi zmdi-shopping-cart"></i>
 				         <span>Tambah</span>

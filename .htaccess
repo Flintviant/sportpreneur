@@ -22,9 +22,10 @@ AddType application/x-httpd-php .html
     # 🔹 URL UTAMA (halaman statis & dinamis)
     # ============================================================
     RewriteRule ^index(.*)$ index.php?url=$1 [L]
-    # RewriteRule ^bisnis(.*)$ bisnis.html?url=$1 [L]
+    RewriteRule ^artikel/([^/]+)/?$ artikel.php?slug=$1 [L,QSA]
+    RewriteRule ^blog(.*)$ blog.php?url=$1 [L,QSA]
     RewriteRule ^product(.*)$ product.php?url=$1 [L]
-    # RewriteRule ^kontak(.*)$ contact.html?url=$1 [L]
+    RewriteRule ^contact(.*)$ contact.php?url=$1 [L]
     # RewriteRule ^belanja(.*)$ shop.html?url=$1 [L]
     # RewriteRule ^lihatartikel(.*)$ blog/lihatArtikel.html?url=$1 [L]
     # RewriteRule ^promo(.*)$ promo.php?url=$1 [L]
@@ -33,13 +34,8 @@ AddType application/x-httpd-php .html
     # 🔹 BLOG SEO URL (SLUG)
     # ============================================================
     # Contoh: /blog/kanker-hati-gejala-penyebab → /blog/lihatArtikel.php?id=slug
-    RewriteRule ^blog/([a-zA-Z0-9-]+)/?$ blog/lihatArtikel.php?id=$1 [L,QSA]
+    # RewriteRule ^blog-detail/([a-zA-Z0-9-]+)/?$ blog-detail.php?slug=$1 [L,QSA]
 
-    # ============================================================
-    # 🔹 REDIRECT OTOMATIS DARI LINK LAMA (?id=)
-    # ============================================================
-    # RewriteCond %{THE_REQUEST} \s/blog/lihatArtikel\.php\?id=([^&\s]+)
-    # RewriteRule ^blog/lihatArtikel\.php$ /blog/%1? [R=301,L]
 </IfModule>
 
 # ============================================================

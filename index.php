@@ -1,39 +1,42 @@
 <?php
-
 	include 'head.php';
 ?>
-
-		
 
 	<!-- Slider -->
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(images/slide-01.jpg);">
+				<div class="item-slick1" style="background-image: url(images/home-sport1.png);">
 					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">								
+							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+									SPORTPRENEUR <br> INDONESIA <br> BERDAMPAK
+								</h2>
+							</div>
+
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Women Collection 2018
+									Merevolusi ekosistem olahraga Indonesia melalui <br> inovasi, kolaborasi, dan pemberdayaan.
+									<br><br> Kami tidak hanya membangun atlet, <br> tapi menciptakan entrepreneur yang mengubah industri.
 								</span>
 							</div>
 								
-							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									NEW SEASON
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
+							<div class="mt-3 layer-slick1 animated visible-false flex-w" data-appear="zoomIn" data-delay="1600">
+								<a href="#program" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 m-r-15">
+									Explore Programs
+								</a>
+
+								<a href="<?=$url_utama?>contact" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									Contact
 								</a>
 							</div>
+
 						</div>
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url(images/slide-02.jpg);">
+				<!-- <div class="item-slick1" style="background-image: url(images/slide-02.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -55,894 +58,441 @@
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url(images/slide-03.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Men Collection 2018
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									New arrivals
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>
 
+	<section class="polygon-section">
 
-	<!-- Banner -->
-	<div class="sec-banner bg0 p-t-80 p-b-50">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-01.jpg" alt="IMG-BANNER">
+	  <!-- Polygon Background -->
+	    <div class="polygon-bg">
+		    <span class="poly"></span>
+		    <span class="poly"></span>
+		    <span class="poly"></span>
+		    <span class="poly"></span>
+		    <span class="poly"></span>
+	    </div>
 
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
-								</span>
+	  <!-- ===== CONTENT KAMU (TIDAK DIUBAH) ===== -->
+	  	<div class="container mt-5 text-center">
+		    <div class="redefine-light">
+		      	<h3 class="redefine-title">
+		        	REDEFINING SPORTS <br> ENTREPRENEURSHIP
+		      	</h3>
 
-								<span class="block1-info stext-102 trans-04">
-									Spring 2018
-								</span>
-							</div>
+		      	<div class="redefine-divider"></div>
 
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
+		      	<p class="ltext-1011">
+		        	Kami adalah gerakan yang mengubah cara Indonesia melihat olahraga.
+			      	Bukan sekadar kompetisi, tapi ekosistem lengkap yang menggabungkan
+			      	passion, bisnis, dan dampak sosial. Dari ide hingga implementasi,
+			      	dari atlet hingga entrepreneur, kami membangun masa depan industri
+			      	olahraga Indonesia yang berkelanjutan dan berdampak global.
+		      	</p>
+		    </div>
+	  	</div>
 
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-02.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									Spring 2018
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accessories
-								</span>
-
-								<span class="block1-info stext-102 trans-04">
-									New Trend
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-140">
-		<div class="container">
-			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">
-					Product Overview
+	  	<!-- Banner -->
+		<div class="sec-banner p-t-80 p-b-50">
+			<div class="container">
+				<h3 class="ltext-103 redefine-title text-center">
+					OUR FLAGSHIP PROGRAMS
 				</h3>
-			</div>
+				<div class="row justify-content-center">
+				  <!-- ITEM -->
+				  <div class="col-md-6 col-xl-4 p-b-30">
+				    <div class="block1">
+				      <img src="images/banner-01.jpg" alt="Sportpreneur Championship">
 
-			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
-					</button>
+				      <a href="#" class="block1-overlay">
+				        <div class="block1-content">
+				          	<h4 class="block1-name">
+				            	SPORTPRENEUR <br> CHAMPIONSHIP
+				          	</h4>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
-					</button>
+				          	<p class="block1-desc">
+				            	Kejuaraan dan festival olahraga berbasis kewirausahaan yang
+				            	mempertemukan atlet, komunitas, brand, dan inovator.
+				          	</p>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
-					</button>
-				</div>
-
-				<div class="flex-w flex-c-m m-tb-10">
-					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
-					</div>
-
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Search
-					</div>
-				</div>
-				
-				<!-- Search product -->
-				<div class="dis-none panel-search w-full p-t-10 p-b-15">
-					<div class="bor8 dis-flex p-l-15">
-						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-							<i class="zmdi zmdi-search"></i>
-						</button>
-
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
-					</div>	
-				</div>
-
-				<!-- Filter -->
-				<div class="dis-none panel-filter w-full p-t-10">
-					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-						<div class="filter-col1 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Sort By
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Default
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: Low to High
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Price: High to Low
-									</a>
-								</li>
+				          	<ul class="block1-list">
+							  <li><i class="fa fa-solid fa-caret-right"></i>Kompetisi & Exhibition</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Funding & Investment</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Investor Access</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Industry Networking</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Media Exposure</li>
 							</ul>
-						</div>
 
-						<div class="filter-col2 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Price
-							</div>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
 
-							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
-									</a>
-								</li>
+				  <!-- ITEM -->
+				  <div class="col-md-6 col-xl-4 p-b-30">
+				    <div class="block1">
+				      <img src="images/banner-02.jpg" alt="Sportpreneur Scholarship">
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$0.00 - $50.00
-									</a>
-								</li>
+				      <a href="#" class="block1-overlay">
+				        <div class="block1-content">
+				          	<h4 class="block1-name">
+				            	SPORTPRENEUR <br> SCHOLARSHIP
+				          	</h4>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$50.00 - $100.00
-									</a>
-								</li>
+				          	<p class="block1-desc">
+				            	Program beasiswa intensif untuk atlet dan individu yang ingin
+				            	menguasai bisnis olahraga.
+				          	</p>
 
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$100.00 - $150.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$150.00 - $200.00
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										$200.00+
-									</a>
-								</li>
+				          	<ul class="block1-list">
+							  <li><i class="fa fa-solid fa-caret-right"></i>Business Education</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Hands-on Training</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Expert Mentorship</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Certification</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Career Placement</li>
 							</ul>
-						</div>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
 
-						<div class="filter-col3 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Color
-							</div>
+				  <!-- ITEM -->
+				  <div class="col-md-6 col-xl-4 p-b-30">
+				    <div class="block1">
+				      <img src="images/banner-03.jpg" alt="Sportpreneur Empowerment">
 
-							<ul>
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
+				      <a href="#" class="block1-overlay">
+				        <div class="block1-content">
+				          	<h4 class="block1-name">
+				            	SPORTPRENEUR <br> EMPOWERMENT
+				          	</h4>
 
-									<a href="#" class="filter-link stext-106 trans-04">
-										Black
-									</a>
-								</li>
+				          	<p class="block1-desc">
+				            	Pemberdayaan komunitas melalui kewirausahaan olahraga untuk
+				            	ekonomi lokal berkelanjutan.
+				          	</p>
 
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Blue
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Grey
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Green
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Red
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-										<i class="zmdi zmdi-circle-o"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										White
-									</a>
-								</li>
+				          	<ul class="block1-list">
+							  <li><i class="fa fa-solid fa-caret-right"></i>Community Training</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>UMKM Development</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Market Access</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Capital Facilitation</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Capacity Building</li>
 							</ul>
-						</div>
-
-						<div class="filter-col4 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Tags
-							</div>
-
-							<div class="flex-w p-t-4 m-r--5">
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Fashion
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Lifestyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Denim
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Streetstyle
-								</a>
-
-								<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-									Crafts
-								</a>
-							</div>
-						</div>
-					</div>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
 				</div>
+
 			</div>
+		</div>
 
-			<div class="row isotope-grid">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-01.jpg" alt="IMG-PRODUCT">
+		<div class="sec-banner p-t-80 p-b-50">
+			<div class="container">
+				<h3 class="ltext-103 redefine-title text-center">
+					UPCOMING EVENT
+				</h3>
+				<div class="row justify-content-center">
+				  <!-- ITEM -->
+				  <div class="col-md-6 col-xl-4 p-b-30">
+				    <div class="block1">
+				      <img src="images/banner-01.jpg" alt="Sportpreneur Championship">
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
+				      <a href="#" class="block1-overlay">
+				        <div class="block1-content">
+				          	<h4 class="block1-name">
+				            	RUN TO RISE
+				          	</h4>
 
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
+				          	<p class="block1-desc">
+				            	SURABAYA DAN JOGJAKARTA
+				          	</p>
 
-								<span class="stext-105 cl3">
-									$16.64
-								</span>
-							</div>
+				          	<ul class="block1-list">
+							  <li><i class="fa fa-solid fa-caret-right"></i>10K</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>5K</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>3K</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>2K</li>
+							</ul>
 
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
+
+				  <!-- ITEM -->
+				  <div class="col-md-6 col-xl-4 p-b-30">
+				    <div class="block1">
+				      <img src="images/banner-02.jpg" alt="Sportpreneur Scholarship">
+
+				      <a href="#" class="block1-overlay">
+				        <div class="block1-content">
+				          	<h4 class="block1-name">
+				            	SPORT INNOVATION <br> EXPO
+				          	</h4>
+
+				          	<p class="block1-desc">
+				            	Pameran teknologi dan inovasi terbaru dalam industri olahraga Indonesia.
+				          	</p>
+
+				          	<ul class="block1-list">
+							  <li><i class="fa fa-solid fa-caret-right"></i>Tech Showcase</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Product Launch</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>B2B Meetings</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Demo Sessions</li>
+							</ul>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
+
+				  <!-- ITEM -->
+				  <div class="col-md-6 col-xl-4 p-b-30">
+				    <div class="block1">
+				      <img src="images/banner-03.jpg" alt="Sportpreneur Empowerment">
+
+				      <a href="#" class="block1-overlay">
+				        <div class="block1-content">
+				          	<h4 class="block1-name">
+				            	STARTUP BOOTCAMP
+				          	</h4>
+
+				          	<p class="block1-desc">
+				            	Program intensif 3 hari untuk mengakselerasi startup olahraga Anda.
+				          	</p>
+
+				          	<ul class="block1-list">
+							  <li><i class="fa fa-solid fa-caret-right"></i>Intensive Workshop</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>1-on-1 Mentoring</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Pitch Practice</li>
+							  <li><i class="fa fa-solid fa-caret-right"></i>Investor Meeting</li>
+							</ul>
+				        </div>
+				      </a>
+				    </div>
+				  </div>
 				</div>
 
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-02.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
-								</a>
-
-								<span class="stext-105 cl3">
-									$35.31
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-03.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Only Check Trouser
-								</a>
-
-								<span class="stext-105 cl3">
-									$25.50
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-04.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Classic Trench Coat
-								</a>
-
-								<span class="stext-105 cl3">
-									$75.00
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-05.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Front Pocket Jumper
-								</a>
-
-								<span class="stext-105 cl3">
-									$34.75
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-06.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Vintage Inspired Classic 
-								</a>
-
-								<span class="stext-105 cl3">
-									$93.20
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-07.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Shirt in Stretch Cotton
-								</a>
-
-								<span class="stext-105 cl3">
-									$52.66
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-08.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pieces Metallic Printed
-								</a>
-
-								<span class="stext-105 cl3">
-									$18.96
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-09.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Converse All Star Hi Plimsolls
-								</a>
-
-								<span class="stext-105 cl3">
-									$75.00
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-10.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Femme T-Shirt In Stripe
-								</a>
-
-								<span class="stext-105 cl3">
-									$25.85
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-11.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply 
-								</a>
-
-								<span class="stext-105 cl3">
-									$63.16
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-12.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
-								</a>
-
-								<span class="stext-105 cl3">
-									$63.15
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-13.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									T-Shirt with Sleeve
-								</a>
-
-								<span class="stext-105 cl3">
-									$18.49
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-14.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pretty Little Thing
-								</a>
-
-								<span class="stext-105 cl3">
-									$54.79
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-15.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Mini Silver Mesh Watch
-								</a>
-
-								<span class="stext-105 cl3">
-									$86.85
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="images/product-16.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Square Neck Back
-								</a>
-
-								<span class="stext-105 cl3">
-									$29.64
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
+		</div>
 
-			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
+		<!-- Product -->
+		<section class="p-t-23 p-b-140">
+			<div class="container">
+				<div class="p-b-10">
+					<h3 class="ltext-103 redefine-title text-center">
+						SPORTPRENEUR MARKETPLACE
+					</h3>
+				</div>
+
+				<div class="row isotope-grid">
+					<?php foreach ($produk as $produks): ?>
+					<div class="col-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+					  <div class="block2">
+
+					    <!-- Gambar Produk -->
+					    <div class="block2-pic hov-img0">
+					      <img src="images/<?= htmlspecialchars($produks['foto_produk']) ?>" alt="<?= htmlspecialchars($produk['nama_barang']) ?>">
+					    </div>
+
+					    <!-- Info Produk -->
+					    <div class="block2-txt p-t-14">
+
+					      <a href="#" class="stext-104 cl4 hov-cl1 trans-04 d-block p-b-5">
+					        <?= htmlspecialchars($produks['nama_barang']) ?>
+					      </a>
+
+					      <span class="stext-105 cl3 d-block p-b-10">
+					        Rp <?= number_format($produks['harga_jual'], 0, ',', '.') ?>
+					      </span>
+
+					      <!-- Button Add Cart -->
+					      <!-- <a href="#"
+					         class="btn-add-cart add-cart"
+					         data-id="<?= $produks['id_barang'] ?>"
+					         data-nama="<?= htmlspecialchars($produks['nama_barang']) ?>"
+					         data-harga="<?= $produks['harga_jual'] ?>">
+					         <i class="zmdi zmdi-shopping-cart"></i>
+					         <span>Tambah</span>
+					      </a> -->
+
+					    </div>
+
+					  </div>
+					</div>
+					<?php endforeach ?>
+				</div>
+
+				<!-- Load more -->
+				<!-- <div class="flex-c-m flex-w w-full p-t-45">
+					<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+						Load More
+					</a>
+				</div> -->
+			</div>
+		</section>
+
+	</section>
+
+	<section class="event-gallery">
+	  	<div class="container">
+
+		    <h3 class="event-title text-center">
+		      EVENT <span>GALLERY</span>
+		    </h3>
+
+		    <div class="gallery-grid">
+
+				<a href="#" class="gallery-item large">
+				<span>Championship<br>2024</span>
 				</a>
-			</div>
+
+				<a href="#" class="gallery-item">
+				<span>Workshop</span>
+				</a>
+
+				<a href="#" class="gallery-item">
+				<span>Seminar</span>
+				</a>
+
+				<a href="#" class="gallery-item">
+				<span>Bootcamp</span>
+				</a>
+
+				<a href="#" class="gallery-item">
+				<span>Community</span>
+				</a>
+
+				<a href="#" class="gallery-item">
+				<span>Exhibition</span>
+				</a>
+
+				<a href="#" class="gallery-item">
+				<span>Talkshow</span>
+				</a>
+
+				<a href="#" class="gallery-item">
+				<span>Training</span>
+				</a>
+
+				<a href="#" class="gallery-item">
+				<span>Networking</span>
+				</a>
+
+	    	</div>
+	  	</div>
+	</section>
+
+		  <!-- ================= PARTNERS ================= -->
+	<section class="partner-section p-t-60 p-b-90">
+		<div class="sports-bg">
+    		<img src="images/indonesia-map.png" class="sport-item s1">
+    	</div>
+	    <div class="container">
+	      <h3 class="ltext-103 redefine-title text-center mb-5">OUR PARTNERS</h3>
+	      <div class="partner-slider">
+	        <div class="partner-item"><span>NIKE<br>INDONESIA</span></div>
+	        <div class="partner-item"><span>ADIDAS<br>SPORTS</span></div>
+	        <div class="partner-item"><span>GOJEK<br>VENTURES</span></div>
+	        <div class="partner-item"><span>TOKOPEDIA<br>CARE</span></div>
+	        <div class="partner-item"><span>KEMENPORA<br>RI</span></div>
+	        <div class="partner-item"><span>BCA<br>DIGITAL</span></div>
+	      </div>
+	    </div>
+	</section>
+
+	  <!-- ================= TEAM ================= -->
+	<section class="team-section p-t-40 p-b-90">
+	    <div class="container">
+
+		    <h3 class="team-title text-center">
+		      MEET OUR TEAM
+		    </h3>
+
+		    <div class="row justify-content-center team-grid">
+
+		       <div class="col-md-6 col-lg-4 col-xl-3 p-b-30">
+		        <div class="team-card">
+		          <img src="<?=$url_utama?>images/team/ceo.png" alt="Team Member">
+
+		          <div class="team-info">
+		            <h5>BWS</h5>
+		            <span>Founder & CEO</span>
+		          </div>
+		        </div>
+		       </div>
+
+		       <div class="col-md-6 col-lg-4 col-xl-3 p-b-30">
+		        <div class="team-card">
+		          <img src="<?=$url_utama?>images/team/managing.png" alt="Team Member">
+
+		          <div class="team-info">
+		            <h5>RR</h5>
+		            <span>Managing Director</span>
+		          </div>
+		        </div>
+		       </div>
+
+		       <div class="col-md-6 col-lg-4 col-xl-3 p-b-30">
+		        <div class="team-card">
+		          <img src="<?=$url_utama?>images/team/program.png" alt="Team Member">
+
+		          <div class="team-info">
+		            <h5>EP</h5>
+		            <span>Event Development Lead</span>
+		          </div>
+		        </div>
+		       </div>
+
+		    </div>
+	    </div>
+	</section>
+
+	  <!-- ================= IMPACT ================= -->
+	<section class="impact-section p-t-40 p-b-90">
+		<div class="container">
+
+		    <h3 class="team-title text-center mb-5">
+		      OUR IMPACT
+		    </h3>
+
+		    <div class="row justify-content-center impact-grid">
+
+		    	<div class="col-md-6 col-lg-3 p-b-30">
+			        <div class="impact-card">
+			          <h4 data-target="1000">0+</h4>
+			          <span>Program Participants</span>
+			        </div>
+		    	</div>
+
+		    	<div class="col-md-6 col-lg-3 p-b-30">
+			        <div class="impact-card">
+			          <h4 data-target="50">0+</h4>
+			          <span>Sports Startup</span>
+			        </div>
+		    	</div>
+
+		    	<div class="col-md-6 col-lg-3 p-b-30">
+			        <div class="impact-card">
+			          <h4 data-target="100">0+</h4>
+			          <span>Scholarship Awarded</span>
+			        </div>
+		    	</div>
+
+		    	<div class="col-md-6 col-lg-3 p-b-30">
+			        <div class="impact-card">
+			          <h4 data-target="25">0+</h4>
+			          <span>Communities Empowered</span>
+			        </div>
+		    	</div>
+
+		    </div>
 		</div>
 	</section>
 
-	<section class="sec-blog bg0 p-t-60 p-b-90">
+	<!-- <section class="sec-blog bg0 p-t-60 p-b-90">
 		<div class="container">
 			<div class="p-b-66">
 				<h3 class="ltext-105 cl5 txt-center respon1">
@@ -1084,6 +634,6 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<?php include 'footer.php'; ?>

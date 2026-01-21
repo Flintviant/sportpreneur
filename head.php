@@ -1,4 +1,81 @@
-<?php include 'koneksi.php'; ?>
+<?php
+
+	include 'koneksi.php'; 
+
+	include 'session_modal.php';
+
+	$current = $_SERVER['REQUEST_URI'];
+
+	function activeMenu($path, $current) {
+	    return ($current == $path || strpos($current, $path.'/') === 0) ? 'active-menu' : '';
+	}
+
+	$limit = 3;
+
+	// ambil halaman sekarang (default 1)
+	$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+	if ($page < 1) $page = 1;
+
+	// hitung offset
+	$offset = ($page - 1) * $limit;
+
+	// hitung total artikel
+	$total_sql = "SELECT COUNT(*) as total FROM tb_artikel";
+	$total_result = $conn->query($total_sql);
+	$total_row = $total_result->fetch_assoc();
+	$total_artikel = $total_row['total'];
+
+	// hitung total halaman
+	$total_pages = ceil($total_artikel / $limit);
+
+	// Query jumlah artikel
+	$sql = "SELECT * FROM tb_artikel ORDER BY id DESC LIMIT $limit OFFSET $offset";
+	$result = $conn->query($sql);
+
+	// buat data jadi array supaya bisa dipakai berkali-kali
+	$artikels = [];
+		if ($result && $result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+		  $artikels[] = $row;
+		}
+	}
+
+	$sql_barang = $conn->query("SELECT * FROM barang ORDER BY id DESC LIMIT 4");
+
+	if (!$sql_barang) {
+	    die("Query Error: " . $conn->error);
+	}
+
+	$produk = [];
+	while ($row = $sql_barang->fetch_assoc()) {
+	    $produk[] = $row; // ambil semua kolom
+	}
+
+	$id_member = $_SESSION['id_member'] ?? null;
+
+	if ($id_member) {
+	    $stmt = $conn->prepare(
+	        "SELECT nm_member, telepon, alamat_member, email FROM member WHERE id_member = ?"
+	    );
+	    $stmt->bind_param("i", $id_member);
+	    $stmt->execute();
+	    $result = $stmt->get_result();
+
+	    if ($row = $result->fetch_assoc()) {
+	        $phone = $row['telepon'];
+	        $nama  = $row['nm_member'];
+	        $address  = $row['alamat_member'];
+	        $email	= $row['email'];
+	    }
+	}
+
+	// $stmt = $conn->prepare("SELECT keyword, description FROM m_dataf");
+	// $stmt->execute();
+	// $result = $stmt->get_result();
+	// $data = $result->fetch_assoc();
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +84,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="images/logo-sport.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -37,229 +114,5 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
-<body class="animsition">
-	
-	<!-- Header -->
-	<header>
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<!-- <div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
 
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
-					</div>
-				</div>
-			</div> -->
-
-			<div class="wrap-menu-desktop">
-				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
-					<a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
-					</a>
-
-					<!-- Menu desktop -->
-					<div class="menu-desktop">
-						<ul class="main-menu">
-							<li class="active-menu">
-								<a href="/">Home</a>
-							</li>
-
-							<li>
-								<a href="/product">Shop</a>
-							</li>
-
-							<li>
-								<a href="/blog">Blog</a>
-							</li>
-
-							<li>
-								<a href="/about">About</a>
-							</li>
-
-							<li>
-								<a href="/contact">Contact</a>
-							</li>
-						</ul>
-					</div>	
-
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-account"></i>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
-							<span class="icon-header-noti" id="cart-count"></span>
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-
-			            <a href="javascript:void(0)" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout">
-						  <i class="zmdi zmdi-power"></i>
-						</a>
-
-					</div>
-				</nav>
-			</div>	
-		</div>
-
-		<!-- Header Mobile -->
-		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
-			<div class="logo-mobile">
-				<a href="<?=$url_utama?>"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
-			</div>
-
-			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-account"></i>
-				</div>
-
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
-					<span class="icon-header-noti" id="cart-count"></span>
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<a class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" id="signout2">
-	              <i class="zmdi zmdi-power"></i>
-	            </a>
-			</div>
-
-			<!-- Button show menu -->
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
-			</div>
-		</div>
-
-
-		<!-- Menu Mobile -->
-		<div class="menu-mobile">
-			<!-- <ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-				</li>
-
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
-						</a>
-					</div>
-				</li>
-			</ul> -->
-
-			<ul class="main-menu-m">
-				<li>
-					<a href="<?=$url_utama?>">Home</a>
-				</li>
-
-				<li>
-					<a href="/product">Shop</a>
-				</li>
-
-				<li>
-					<a href="/blog">Blog</a>
-				</li>
-
-				<li>
-					<a href="/about">About</a>
-				</li>
-
-				<li>
-					<a href="/contact">Contact</a>
-				</li>
-			</ul>
-		</div>
-
-		<!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
-				</form>
-			</div>
-		</div>
-	</header>
-
-	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Keranjang Kamu
-				</span>
-
-				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-			
-			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full" id="cart-items">
-					
-				</ul>
-				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40" id="cart-total">
-						Total: 0
-					</div>
-
-					<div class="header-cart-buttons flex-w w-full">
-						<!-- <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
-						</a> -->
-
-						<a href="shoping-cart.php" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Check Out
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<?php require_once __DIR__ . '/header.php'; ?>

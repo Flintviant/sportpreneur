@@ -28,4 +28,7 @@ $conn->set_charset("utf8mb4");
 
 $url_admin = 'https://sportpreneur.id/admin/';
 $url_utama = 'https://sportpreneur.id/';
+
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+$current_url = htmlspecialchars($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8');
 ?>

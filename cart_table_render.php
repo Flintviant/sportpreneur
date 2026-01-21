@@ -13,7 +13,7 @@ if (!empty($_SESSION['cart'])) {
         <tr class="table_row">
             <td class="column-1">
                 <div class="how-itemcart1">
-                    <img src="images/product-01.jpg" alt="">
+                    <img src="images/'.$item['foto'].'" alt="">
                 </div>
             </td>
             <td class="column-2">'.$item['nama'].'</td>
