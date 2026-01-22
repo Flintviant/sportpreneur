@@ -6,9 +6,9 @@
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url(images/home-sport1.png);">
+				<div class="item-slick1">
 					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">								
+						<div class="flex-col-l-m h-full p-b-30 respon5">								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
 									SPORTPRENEUR <br> INDONESIA <br> BERDAMPAK
@@ -75,7 +75,7 @@
 	    </div>
 
 	  <!-- ===== CONTENT KAMU (TIDAK DIUBAH) ===== -->
-	  	<div class="container mt-5 text-center">
+	  	<div class="container text-center">
 		    <div class="redefine-light">
 		      	<h3 class="redefine-title">
 		        	REDEFINING SPORTS <br> ENTREPRENEURSHIP
@@ -103,7 +103,7 @@
 				  <!-- ITEM -->
 				  <div class="col-md-6 col-xl-4 p-b-30">
 				    <div class="block1">
-				      <img src="images/banner-01.jpg" alt="Sportpreneur Championship">
+				      <img src="images/sport-champion.png" alt="Sportpreneur Championship">
 
 				      <a href="#" class="block1-overlay">
 				        <div class="block1-content">
@@ -132,7 +132,7 @@
 				  <!-- ITEM -->
 				  <div class="col-md-6 col-xl-4 p-b-30">
 				    <div class="block1">
-				      <img src="images/banner-02.jpg" alt="Sportpreneur Scholarship">
+				      <img src="images/sport-scholar.png" alt="Sportpreneur Scholarship">
 
 				      <a href="#" class="block1-overlay">
 				        <div class="block1-content">
@@ -160,7 +160,7 @@
 				  <!-- ITEM -->
 				  <div class="col-md-6 col-xl-4 p-b-30">
 				    <div class="block1">
-				      <img src="images/banner-03.jpg" alt="Sportpreneur Empowerment">
+				      <img src="images/sport-empower.png" alt="Sportpreneur Empowerment">
 
 				      <a href="#" class="block1-overlay">
 				        <div class="block1-content">
@@ -198,7 +198,7 @@
 				  <!-- ITEM -->
 				  <div class="col-md-6 col-xl-4 p-b-30">
 				    <div class="block1">
-				      <img src="images/banner-01.jpg" alt="Sportpreneur Championship">
+				      <img src="images/up-run.png" alt="Sportpreneur Championship">
 
 				      <a href="#" class="block1-overlay">
 				        <div class="block1-content">
@@ -225,7 +225,7 @@
 				  <!-- ITEM -->
 				  <div class="col-md-6 col-xl-4 p-b-30">
 				    <div class="block1">
-				      <img src="images/banner-02.jpg" alt="Sportpreneur Scholarship">
+				      <img src="images/up-inov.png" alt="Sportpreneur Scholarship">
 
 				      <a href="#" class="block1-overlay">
 				        <div class="block1-content">
@@ -251,7 +251,7 @@
 				  <!-- ITEM -->
 				  <div class="col-md-6 col-xl-4 p-b-30">
 				    <div class="block1">
-				      <img src="images/banner-03.jpg" alt="Sportpreneur Empowerment">
+				      <img src="images/up-boot.png" alt="Sportpreneur Empowerment">
 
 				      <a href="#" class="block1-overlay">
 				        <div class="block1-content">
@@ -345,39 +345,39 @@
 
 		    <div class="gallery-grid">
 
-				<a href="#" class="gallery-item large">
+				<a href="#" class="gallery-item large championship">
 				<span>Championship<br>2024</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item workshop">
 				<span>Workshop</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item seminar">
 				<span>Seminar</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item bootcamp">
 				<span>Bootcamp</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item community">
 				<span>Community</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item exhibition">
 				<span>Exhibition</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item talkshow">
 				<span>Talkshow</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item training">
 				<span>Training</span>
 				</a>
 
-				<a href="#" class="gallery-item">
+				<a href="#" class="gallery-item networking">
 				<span>Networking</span>
 				</a>
 
