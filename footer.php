@@ -294,53 +294,58 @@
 	</script>
 
 	<script>
-		document.getElementById('profileForm').addEventListener('submit', function(e) {
-		  e.preventDefault();
+		const profileForm = document.getElementById('profileForm');
 
-		  const form = this;
-		  const msg  = document.getElementById('profileMsg');
-		  const btn  = form.querySelector('button');
+		if (profileForm) {
+		  profileForm.addEventListener('submit', function(e) {
+		    e.preventDefault();
 
-		  btn.disabled = true;
-		  btn.innerText = 'Updating...';
+		    const form = this;
+		    const msg  = document.getElementById('profileMsg');
+		    const btn  = form.querySelector('button');
 
-		  fetch('update_profile.php', {
-		    method: 'POST',
-		    body: new FormData(form)
-		  })
-		  .then(res => res.json())
-		  .then(data => {
-		    if (data.status === 'success') {
-		      msg.innerHTML = `
-		        <div class="alert alert-success">
-		          ✅ Profil berhasil diperbarui
-		        </div>
-		      `;
+		    btn.disabled = true;
+		    btn.innerText = 'Updating...';
 
-		      	setTimeout(() => {
-			      window.location.href = '/profile';
-			    }, 1500);
-		    } else {
+		    fetch('update_profile.php', {
+		      method: 'POST',
+		      body: new FormData(form)
+		    })
+		    .then(res => res.json())
+		    .then(data => {
+		      if (data.status === 'success') {
+		        msg.innerHTML = `
+		          <div class="alert alert-success">
+		            ✅ Profil berhasil diperbarui
+		          </div>
+		        `;
+
+		        setTimeout(() => {
+		          window.location.href = 'profile.php';
+		        }, 1500);
+		      } else {
+		        msg.innerHTML = `
+		          <div class="alert alert-danger">
+		            ❌ ${data.message}
+		          </div>
+		        `;
+		      }
+		    })
+		    .catch(() => {
 		      msg.innerHTML = `
 		        <div class="alert alert-danger">
-		          ❌ ${data.message}
+		          ❌ Terjadi kesalahan
 		        </div>
 		      `;
-		    }
-		  })
-		  .catch(() => {
-		    msg.innerHTML = `
-		      <div class="alert alert-danger">
-		        ❌ Terjadi kesalahan
-		      </div>
-		    `;
-		  })
-		  .finally(() => {
-		    btn.disabled = false;
-		    btn.innerText = 'Update Data';
+		    })
+		    .finally(() => {
+		      btn.disabled = false;
+		      btn.innerText = 'Update Data';
+		    });
 		  });
-		});
+		}
 	</script>
+
 
 </body>
 </html>
