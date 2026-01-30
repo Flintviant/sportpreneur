@@ -293,7 +293,7 @@
 		});
 	</script>
 
-	<!-- <script>
+	<script>
 		document.getElementById('profileForm').addEventListener('submit', function(e) {
 		  e.preventDefault();
 
@@ -340,7 +340,7 @@
 		    btn.innerText = 'Update Data';
 		  });
 		});
-	</script> -->
+	</script>
 
 </body>
 </html>
