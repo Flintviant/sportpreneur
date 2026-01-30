@@ -6,31 +6,84 @@
 	$id_member = $_SESSION['id_member'] ?? null;
 
 	if ($id_member) {
-	    $stmt = $conn->prepare(
-	        "SELECT nm_member, telepon, alamat_member, email FROM member WHERE id_member = ?"
-	    );
-	    $stmt->bind_param("i", $id_member);
+
+	    $stmt = $conn->prepare("
+	        SELECT 
+	            m.nm_member,
+	            m.email,
+	            m.telepon,
+	            m.alamat_member,
+	            m.kota_member,
+
+	            m.id_role,
+	            r.role_name,
+
+	            a.olahraga,
+	            a.tawarkan,
+	            a.butuh,
+	            a.dampak
+
+	        FROM member m
+	        LEFT JOIN akun a 
+	            ON m.id_member = a.id_member
+	        LEFT JOIN roles r
+	            ON m.id_role = r.id_role
+	        WHERE m.id_member = ?
+	        LIMIT 1
+	    ");
+
+	    $stmt->bind_param('i', $id_member);
 	    $stmt->execute();
 	    $result = $stmt->get_result();
 
 	    if ($row = $result->fetch_assoc()) {
-	        $phone = $row['telepon'];
-	        $nama  = $row['nm_member'];
-	        $address  = $row['alamat_member'];
-	        $email	= $row['email'];
+
+	        // DATA MEMBER
+	        $nama    = $row['nm_member'];
+	        $email   = $row['email'];
+	        $phone   = $row['telepon'];
+	        $address = $row['alamat_member'];
+	        $kota    = $row['kota_member'];
+
+	        // ROLE
+	        $role   = $row['id_role'];
+	        $role_name = $row['role_name']; // ✅ SEKARANG AMAN
+
+	        // DATA AKUN
+	        $olahraga = $row['olahraga'];
+	        $tawarkan = $row['tawarkan'];
+	        $butuh    = $row['butuh'];
+	        $dampak   = $row['dampak'];
 	    }
 	}
 
-	$sql = $conn->query("SELECT * FROM barang");
+	$sql_barang = $conn->query("
+	  SELECT 
+	    b.*, 
+	    k.nama_kategori
+	  FROM barang b
+	  JOIN kategori k 
+	    ON b.id_kategori = k.id_kategori
+	  ORDER BY b.id DESC
+	  LIMIT 4
+	");
 
-	if (!$sql) {
-	    die("Query Error: " . $conn->error);
+	if (!$sql_barang) {
+	  die('Query Error: ' . $conn->error);
 	}
 
 	$produk = [];
-	while ($row = $sql->fetch_assoc()) {
-	    $produk[] = $row; // ambil semua kolom
+	while ($row = $sql_barang->fetch_assoc()) {
+	  $produk[] = $row;
 	}
+
+	$kategori_btn = [
+	    1 => "Pesan",
+	    2 => "Lihat Jasa",
+	    3 => "Lihat Event",
+	    4 => "Gabung Membership",
+	    5 => "Hubungi Pelatih"
+	];
 ?>
 
 
@@ -90,6 +143,7 @@
 	                <div class="menu-desktop">
 	                    <ul class="main-menu">
 	                        <li><a href="<?= $url_utama ?>">Home</a></li>
+	                        <li><a href="/inkubator">Inkubator</a></li>
 	                        <li class="active-menu"><a href="/product">Shop</a></li>
 	                        <li><a href="/blog">Blog</a></li>
 	                        <!-- <li><a href="/about">About</a></li> -->
@@ -99,9 +153,9 @@
 
 	                <!-- Icon Header -->
 	                <div class="wrap-icon-header flex-w flex-r-m">
-	                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-	                        <i class="zmdi zmdi-account"></i>
-	                    </div>
+	                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<a href="/profile"><i class="zmdi zmdi-account"></i></a>
+						</div>
 
 	                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
 	                        <span class="icon-header-noti" id="cart-count"></span>
@@ -129,9 +183,9 @@
 
 	        <!-- Icon Mobile -->
 	        <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-	                <i class="zmdi zmdi-account"></i>
-	            </div>
+	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+					<a href="/profile"><i class="zmdi zmdi-account"></i></a>
+				</div>
 
 	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
 	                <span class="icon-header-noti" id="cart-count"></span>
@@ -156,80 +210,13 @@
 	    <div class="menu-mobile">
 	        <ul class="main-menu-m">
 	            <li><a href="<?= $url_utama ?>">Home</a></li>
+	            <li><a href="/inkubator">Inkubator</a></li>
 	            <li><a href="/product">Shop</a></li>
 	            <li><a href="/blog">Blog</a></li>
 	            <!-- <li><a href="/about">About</a></li> -->
 	            <li><a href="/contact">Contact</a></li>
 	        </ul>
 	    </div>
-
-	    <!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-		  <div class="container-search-header">
-
-		    <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-		      <img src="images/icons/icon-close2.png" alt="CLOSE">
-		    </button>
-
-		    <?php 
-		    	$isLogin = isset($_SESSION['id_member']);
-		     	if ($isLogin): 
-		    ?>
-			    <!-- ================= USER SUDAH LOGIN ================= -->
-			    <form id="profileForm" class="profile-form elegant-form">
-
-				 	<input type="hidden" name="id_member" value="<?= $_SESSION['id_member'] ?>">
-
-					<div class="form-group">
-				    <label>Nama</label>
-				    <input type="text" name="nm_member" value="<?= htmlspecialchars($nama) ?>" required>
-					</div>
-
-					<div class="form-group">
-				    <label>Email</label>
-				    <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
-					</div>
-
-					<div class="form-group">
-				    <label>Alamat</label>
-				    <textarea name="alamat_member" rows="3" required><?= htmlspecialchars($address) ?></textarea>
-					</div>
-
-					<div class="form-group">
-				    	<label>Nomor Handphone</label>
-				    	<input type="text" name="telepon" value="<?= htmlspecialchars($phone) ?>" required>
-				  	</div>
-
-					<button type="submit" class="btn-update">
-				    	Update Data
-				  	</button>
-
-				  	<div id="profileMsg" class="form-message"></div>
-
-				</form>
-
-		    <?php else: ?>
-		    <!-- ================= USER BELUM LOGIN ================= -->
-		    <div class="text-center p-4">
-
-		      <h4 class="mb-3">Login Diperlukan</h4>
-		      <p class="text-muted">
-		        Silakan login terlebih dahulu untuk melihat dan mengubah profil Anda.
-		      </p>
-
-		      <a href="login.php" class="btn btn-dark w-100 mb-2">
-		        Login
-		      </a>
-
-		      <a href="register.php" class="btn btn-outline-dark w-100">
-		        Daftar Akun
-		      </a>
-
-		    </div>
-		    <?php endif; ?>
-
-		  </div>
-		</div>
 
 	</header>
 
@@ -293,6 +280,9 @@
 
 				    <!-- Gambar Produk -->
 				    <div class="block2-pic hov-img0">
+				    	<span class="block2-category">
+					      <?= htmlspecialchars($produk['nama_kategori']) ?>
+					    </span>
 				      <img src="images/<?= htmlspecialchars($produk['foto_produk']) ?>" alt="<?= htmlspecialchars($produk['nama_barang']) ?>">
 				    </div>
 
@@ -307,6 +297,8 @@
 				        Rp <?= number_format($produk['harga_jual'], 0, ',', '.') ?>
 				      </span>
 
+				      <?php $btn_text = $kategori_btn[$produk['id_kategori']] ?? "Lihat Produk"; ?>
+
 				      <!-- Button Add Cart -->
 				      <a href="#"
 				         class="btn-add-cart add-cart"
@@ -315,7 +307,7 @@
 				         data-foto="<?= htmlspecialchars($produk['foto_produk']) ?>"
 				         data-harga="<?= $produk['harga_jual'] ?>">
 				         <i class="zmdi zmdi-shopping-cart"></i>
-				         <span>Tambah</span>
+				         <span><?= $btn_text ?></span>
 				      </a>
 
 				    </div>
@@ -326,11 +318,11 @@
 			</div>
 
 			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
+			<!-- <div class="flex-c-m flex-w w-full p-t-45">
 				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
 					Load More
 				</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
 		

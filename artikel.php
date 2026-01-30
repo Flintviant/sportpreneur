@@ -1,7 +1,8 @@
 <?php
-	require_once __DIR__ . '/koneksi.php';
 
-	require_once __DIR__ . '/session_modal.php';
+	// require_once __DIR__ . '/session_modal.php';
+
+	require_once __DIR__ . '/koneksi.php';
 
 	// Validasi slug
 	if (empty($_GET['slug'])) {
@@ -114,13 +115,14 @@
 
 	                <!-- Logo -->
 	                <a href="<?= $url_utama ?>" class="logo">
-	                    <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+	                    <img src="<?=$url_utama?>images/logo-sport-nav.png" alt="IMG-LOGO">
 	                </a>
 
 	                <!-- Menu Desktop -->
 	                <div class="menu-desktop">
 	                    <ul class="main-menu">
 	                        <li><a href="<?= $url_utama ?>">Home</a></li>
+	                        <li><a href="/inkubator">Inkubator</a></li>
 	                        <li><a href="/product">Shop</a></li>
 	                        <li class="active-menu"><a href="/blog">Blog</a></li>
 	                        <!-- <li><a href="/about">About</a></li> -->
@@ -130,8 +132,8 @@
 
 	                <!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-account"></i>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<a href="/profile"><i class="zmdi zmdi-account"></i></a>
 						</div>
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
@@ -155,14 +157,14 @@
 	        <!-- Logo Mobile -->
 	        <div class="logo-mobile">
 	            <a href="<?= $url_utama ?>">
-	                <img src="images/icons/logo-01.png" alt="IMG-LOGO">
+	                <img src="<?=$url_utama?>images/logo-sport-nav.png" alt="IMG-LOGO">
 	            </a>
 	        </div>
 
 	        <!-- Icon Mobile -->
 	        <div class="wrap-icon-header flex-w flex-r-m m-r-15">
-	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-	                <i class="zmdi zmdi-account"></i>
+	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+	                <a href="/profile"><i class="zmdi zmdi-account"></i></a>
 	            </div>
 
 	            <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
@@ -188,80 +190,13 @@
 	    <div class="menu-mobile">
 	        <ul class="main-menu-m">
 	            <li><a href="<?= $url_utama ?>">Home</a></li>
+	            <li><a href="/inkubator">Inkubator</a></li>
 	            <li><a href="/product">Shop</a></li>
 	            <li><a href="/blog">Blog</a></li>
 	            <!-- <li><a href="/about">About</a></li> -->
 	            <li><a href="/contact">Contact</a></li>
 	        </ul>
 	    </div>
-
-	    <!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-		  <div class="container-search-header">
-
-		    <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-		      <img src="<?=$url_utama?>images/icons/icon-close2.png" alt="CLOSE">
-		    </button>
-
-		    <?php 
-		    	$isLogin = isset($_SESSION['id_member']);
-		     	if ($isLogin): 
-		    ?>
-			    <!-- ================= USER SUDAH LOGIN ================= -->
-			    <form id="profileForm" class="profile-form elegant-form">
-
-				 	<input type="hidden" name="id_member" value="<?= $_SESSION['id_member'] ?>">
-
-					<div class="form-group">
-				    <label>Nama</label>
-				    <input type="text" name="nm_member" value="<?= htmlspecialchars($nama) ?>" required>
-					</div>
-
-					<div class="form-group">
-				    <label>Email</label>
-				    <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
-					</div>
-
-					<div class="form-group">
-				    <label>Alamat</label>
-				    <textarea name="alamat_member" rows="3" required><?= htmlspecialchars($address) ?></textarea>
-					</div>
-
-					<div class="form-group">
-				    	<label>Nomor Handphone</label>
-				    	<input type="text" name="telepon" value="<?= htmlspecialchars($phone) ?>" required>
-				  	</div>
-
-					<button type="submit" class="btn-update">
-				    	Update Data
-				  	</button>
-
-				  	<div id="profileMsg" class="form-message"></div>
-
-				</form>
-
-		    <?php else: ?>
-		    <!-- ================= USER BELUM LOGIN ================= -->
-		    <div class="text-center p-4">
-
-		      <h4 class="mb-3">Login Diperlukan</h4>
-		      <p class="text-muted">
-		        Silakan login terlebih dahulu untuk melihat dan mengubah profil Anda.
-		      </p>
-
-		      <a href="login.php" class="btn btn-dark w-100 mb-2">
-		        Login
-		      </a>
-
-		      <a href="register.php" class="btn btn-outline-dark w-100">
-		        Daftar Akun
-		      </a>
-
-		    </div>
-		    <?php endif; ?>
-
-		  </div>
-		</div>
 
 	</header>
 
@@ -575,6 +510,61 @@
     </script>
 
     <script>
+
+		function renderCart() {
+		    fetch('<?=$url_utama?>cart_render.php')
+		        .then(res => res.json())
+		        .then(data => {
+
+		            // isi cart popup / table
+		            document.getElementById('cart-items').innerHTML = data.html;
+		            document.getElementById('cart-total').innerHTML =
+		                'Total: Rp ' + data.total;
+
+		            bindButtons();
+		            updateCartBadge();
+		        });
+		}
+
+		function bindButtons() {
+		    document.querySelectorAll('.qty-btn').forEach(btn => {
+		        btn.onclick = () => updateCart(btn.dataset.id, btn.dataset.type);
+		    });
+
+		    document.querySelectorAll('.remove-cart').forEach(btn => {
+		        btn.onclick = () => updateCart(btn.dataset.id, 'remove');
+		    });
+		}
+
+		function updateCart(id, type) {
+		    fetch('<?=$url_utama?>cart_update.php', {
+		        method: 'POST',
+		        headers: {'Content-Type': 'application/json'},
+		        body: JSON.stringify({id, type})
+		    }).then(() => {
+		        renderCart();        // popup
+		        renderCartTable();   // table
+		        updateCartBadge();   // badge
+		    });
+		}
+
+
+		function updateCartBadge() {
+		  fetch('<?=$url_utama?>cart_count.php')
+		    .then(res => res.json())
+		    .then(data => {
+		      document.querySelectorAll('.icon-header-noti').forEach(el => {
+		        el.setAttribute('data-notify', data.count);
+		      });
+		    });
+		}
+
+		renderCart();
+		renderCartTable();
+		updateCartBadge();
+	</script>
+
+    <!-- <script>
 		document.getElementById('profileForm').addEventListener('submit', function(e) {
 		  e.preventDefault();
 
@@ -617,7 +607,7 @@
 		    btn.innerText = 'Update Data';
 		  });
 		});
-	</script>
+	</script> -->
 
 </body>
 </html>

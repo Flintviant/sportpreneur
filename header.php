@@ -4,33 +4,6 @@
 	<header>
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<!-- <div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
-					</div>
-				</div>
-			</div> -->
-
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
 					
@@ -44,6 +17,9 @@
 					    <ul class="main-menu">
 					        <li class="<?= activeMenu('/', $current) ?>">
 					            <a href="<?= $url_utama ?>">Home</a>
+					        </li>
+					        <li class="<?= activeMenu('/inkubator', $current) ?>">
+					            <a href="/inkubator">Inkubator</a>
 					        </li>
 					        <li class="<?= activeMenu('/product', $current) ?>">
 					            <a href="/product">Shop</a>
@@ -62,8 +38,8 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-account"></i>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+							<a href="/profile"><i class="zmdi zmdi-account"></i></a>
 						</div>
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
@@ -89,8 +65,8 @@
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-account"></i>
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+					<a href="/profile"><i class="zmdi zmdi-account"></i></a>
 				</div>
 
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart">
@@ -114,37 +90,13 @@
 
 		<!-- Menu Mobile -->
 		<div class="menu-mobile">
-			<!-- <ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-				</li>
-
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
-						</a>
-					</div>
-				</li>
-			</ul> -->
-
 			<ul class="main-menu-m">
 				<li>
 					<a href="<?=$url_utama?>">Home</a>
+				</li>
+
+				<li>
+					<a href="/inkubator">Inkubator</a>
 				</li>
 
 				<li>
@@ -163,74 +115,6 @@
 					<a href="/contact">Contact</a>
 				</li>
 			</ul>
-		</div>
-
-		<!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-		  <div class="container-search-header">
-
-		    <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-		      <img src="images/icons/icon-close2.png" alt="CLOSE">
-		    </button>
-
-		    <?php 
-		    	$isLogin = isset($_SESSION['id_member']);
-		     	if ($isLogin): 
-		    ?>
-			    <!-- ================= USER SUDAH LOGIN ================= -->
-			    <form id="profileForm" class="profile-form elegant-form">
-
-				 	<input type="hidden" name="id_member" value="<?= $_SESSION['id_member'] ?>">
-
-					<div class="form-group">
-				    <label>Nama</label>
-				    <input type="text" name="nm_member" value="<?= htmlspecialchars($nama) ?>" required>
-					</div>
-
-					<div class="form-group">
-				    <label>Email</label>
-				    <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
-					</div>
-
-					<div class="form-group">
-				    <label>Alamat</label>
-				    <textarea name="alamat_member" rows="3" required><?= htmlspecialchars($address) ?></textarea>
-					</div>
-
-					<div class="form-group">
-				    	<label>Nomor Handphone</label>
-				    	<input type="text" name="telepon" value="<?= htmlspecialchars($phone) ?>" required>
-				  	</div>
-
-					<button type="submit" class="btn-update">
-				    	Update Data
-				  	</button>
-
-				  	<div id="profileMsg" class="form-message"></div>
-
-				</form>
-
-		    <?php else: ?>
-		    <!-- ================= USER BELUM LOGIN ================= -->
-		    <div class="text-center p-4">
-
-		      <h4 class="mb-3">Login Diperlukan</h4>
-		      <p class="text-muted">
-		        Silakan login terlebih dahulu untuk melihat dan mengubah profil Anda.
-		      </p>
-
-		      <a href="login.php" class="btn btn-dark w-100 mb-2">
-		        Login
-		      </a>
-
-		      <a href="register.php" class="btn btn-outline-dark w-100">
-		        Daftar Akun
-		      </a>
-
-		    </div>
-		    <?php endif; ?>
-
-		  </div>
 		</div>
 
 	</header>

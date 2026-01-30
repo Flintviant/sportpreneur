@@ -222,51 +222,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 
 /*==================================================================
-[ Top bar ]*/
-.top-bar {
-  height: 40px;
-  background-color: #222;
-}
-
-/*---------------------------------------------*/
-.left-top-bar {
-  font-family: Poppins-Regular;
-  font-size: 12px;
-  line-height: 1.8;
-  color: #b2b2b2;
-}
-
-
-/*---------------------------------------------*/
-.right-top-bar a {
-  font-family: Poppins-Regular;
-  font-size: 12px;
-  line-height: 1.8;
-
-  height: 100%;
-  color: #b2b2b2;
-  border-right: 1px solid rgba(255,255,255,0.3);
-}
-
-.right-top-bar a:first-child {
-  border-left: 1px solid rgba(255,255,255,0.3);
-}
-
-.right-top-bar a:hover {
-  color: #6c7ae0;
-}
-
-
-/*---------------------------------------------*/
-.topbar-mobile li {
-  padding: 8px 20px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  background-color: #222;
-}
-
-
-
-/*==================================================================
 [ Menu ]*/
 
 .wrap-menu-desktop {
@@ -1204,38 +1159,80 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*//////////////////////////////////////////////////////////////////
 [ Slick1 ]*/
-.wrap-slick1 {
-  z-index: 10;
+.section-card {
+  padding-top: 80px; /* samakan dengan tinggi header */
 }
 
 .item-slick1 {
-  height: calc(100vh - 40px);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url(/images/home-sport1.png);
+  position: relative; /* ⬅️ KUNCI OVERLAY */
+
+  min-height: calc(100vh - 84px);
+  background: url(/images/home-sport.png) center / cover no-repeat;
+
+  border-radius: 24px;
+  overflow: hidden;
 }
 
-.rs1-slick1 .item-slick1 {
-  height: calc(100vh - 84px);
+.layer-slick1 {
+  display: block;
 }
 
-.rs2-slick1 .item-slick1 {
-  height: 100vh;
+.hero-content {
+  position: absolute;
+  bottom: 44px;      /* ⬅️ TINGGI FIX */
+  left: 40px;        /* ⬅️ JARAK FIX */
+  z-index: 5;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 32px;
+  background: #e10600;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all .3s ease;
+
+  position: relative;
+  z-index: 10;
+}
+
+.hero-cta {
+  margin-top: auto; /* ⬅️ KUNCI KE BAWAH */
 }
 
 @media (max-width: 991px) {
   .item-slick1 {
+    position: relative;
+
     background-image: url(/images/home-sport-mobile2.png);
-    background-size: contain;
-    background-position: center;
+    background-size: contain;              /* ⬅️ PENTING */
+    background-position: top center;     /* ⬅️ gambar naik */
     background-repeat: no-repeat;
-    height: calc(100vh - 40px);
-    margin-top: -22%;
+
+    width: 100%;
+    min-height: 450px;                   /* ⬅️ FIX HEIGHT, BUKAN vh */
+    height: auto;
+
+    border-radius: 20px;
   }
 
-  .layer-slick1 {
-    display: none !important;
+  .hero-content {
+    position: absolute;
+    bottom: 24px;                        /* ⬅️ dekat bawah */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  .hero-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+    white-space: nowrap; /* ⬅️ INI KUNCINYA */
   }
 }
 
@@ -2095,40 +2092,62 @@ input.num-product::-webkit-inner-spin-button {
 [ Block2 ]*/
 .block2-pic {
   position: relative;
-  border-radius: 5%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Label kategori */
+.block2-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
 }
 
 .block2-btn {
   position: absolute;
-  bottom: -50px;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
+  bottom: -60px;
   transform: translateX(-50%);
+  z-index: 3;
+
+  background: #e10600;
+  color: #fff;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+
+  opacity: 0;
+  transition: all 0.35s ease;
+  white-space: nowrap;
 }
 
+/* Hover desktop */
 .block2-pic:hover .block2-btn {
   bottom: 20px;
+  opacity: 1;
 }
 
-/* Mobile: selalu tampil */
 @media (max-width: 767px) {
   .block2-btn {
-    opacity: 1 !important;
-    visibility: visible !important;
-    bottom: 10px !important;
+    bottom: 16px;
+    opacity: 1;
   }
-}
 
-/*---------------------------------------------*/
-.block2-txt-child1 {
-  width: calc(100% - 30px);
-}
-
-.block2-txt-child2 {
-  width: 30px;
+  .block2-category {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
 }
 
 .btn-addwish-b2 .icon-heart2 {
@@ -3571,9 +3590,13 @@ input.num-product::-webkit-inner-spin-button {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 200px;
+  grid-auto-rows: 220px;
   gap: 24px;
+
+  /* 🔥 KUNCI: isi celah kosong */
+  grid-auto-flow: dense;
 }
+
 
 /* ITEM */
 .gallery-item {
@@ -3617,7 +3640,6 @@ input.num-product::-webkit-inner-spin-button {
 /* LARGE FEATURE */
 .gallery-item.large {
   grid-row: span 2;
-  grid-column: span 1;
   font-size: 24px;
 }
 
@@ -3678,13 +3700,15 @@ input.num-product::-webkit-inner-spin-button {
 @media (max-width: 991px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
   }
 
   .gallery-item.large {
     grid-column: span 2;
-    grid-row: span 1;
+    grid-row: span 1; /* ⬅️ jangan tinggi di mobile */
   }
 }
+
 
 @media (max-width: 575px) {
   .event-title {
@@ -3695,8 +3719,11 @@ input.num-product::-webkit-inner-spin-button {
     grid-template-columns: 1fr;
   }
 
-  .gallery-item {
+  .gallery-item,
+  .gallery-item.large {
     height: 180px;
+    grid-column: span 1;
+    grid-row: span 1;
   }
 }
 
@@ -3794,7 +3821,7 @@ input.num-product::-webkit-inner-spin-button {
 /* IMAGE */
 .team-card img {
   width: 100%;
-  height: 320px;
+  height: 280px;
   object-fit: cover;
 }
 
@@ -3960,199 +3987,10 @@ input.num-product::-webkit-inner-spin-button {
   background: #fff;
 }
 
-/* layer background */
-.sports-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* gambar map */
-.sport-item {
-  position: absolute;
-  top: 20%;
-  left: 15%;
-  width: 100%;
-  max-width: 900px;
-  transform: translate(-50%, -50%);
-  opacity: 0.10;                 /* KUNCI: jangan terlalu kecil */
-  filter: grayscale(100%) contrast(1.1);
-  animation: mapFloat 30s ease-in-out infinite;
-}
-
 /* layer konten */
 .partner-section .container {
   position: relative;
   z-index: 2;
-}
-
-
-@media (max-width: 768px) {
-    .sport-item {
-    position: fixed;
-    top: 20%;
-    width: 70%;
-    max-width: 900px;
-    transform: translate(-50%, -50%);
-    opacity: 0.10;                 /* KUNCI: jangan terlalu kecil */
-    filter: grayscale(100%) contrast(1.1);
-    animation: mapFloat 30s ease-in-out infinite;
-  }
-}
-
-/* ===== APPLE FORM ===== */
-.apple-form {
-  background: #fff;
-  padding: 30px 28px;
-  border-radius: 18px;
-  max-width: 420px;
-  margin: auto;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-               "Helvetica Neue", Arial, sans-serif;
-  box-shadow: 0 20px 40px rgba(0,0,0,.08);
-}
-
-/* ===== FIELD ===== */
-.apple-field {
-  margin-bottom: 22px;
-}
-
-/* ===== LABEL ===== */
-.apple-field label {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-  color: #6e6e73;
-  margin-bottom: 6px;
-}
-
-/* ===== INPUT & TEXTAREA ===== */
-.apple-field input,
-.apple-field textarea {
-  width: 100%;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 14px;
-  font-size: 14px;
-  background: #f5f5f7;
-  color: #1d1d1f;
-  transition: all .2s ease;
-}
-
-.apple-field input::placeholder,
-.apple-field textarea::placeholder {
-  color: #a1a1a6;
-}
-
-.apple-field input:focus,
-.apple-field textarea:focus {
-  outline: none;
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(0,122,255,.15);
-}
-
-/* ===== BUTTON ===== */
-.apple-btn {
-  width: 100%;
-  margin-top: 6px;
-  padding: 13px;
-  border: none;
-  border-radius: 14px;
-  background: #0071e3;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all .25s ease;
-}
-
-.apple-btn:hover {
-  background: #0077ed;
-  transform: translateY(-1px);
-}
-
-.apple-btn:active {
-  transform: scale(.98);
-}
-
-/* ===== MESSAGE ===== */
-.apple-msg {
-  margin-top: 16px;
-  font-size: 13px;
-  text-align: center;
-  color: #6e6e73;
-}
-
-/* === FORM CONTAINER === */
-.elegant-form {
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  max-width: 420px;
-  margin: 0 auto;
-  animation: fadeUp .3s ease;
-}
-
-/* === FORM GROUP === */
-.elegant-form .form-group {
-  margin-bottom: 18px;
-}
-
-/* === LABEL === */
-.elegant-form label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #333;
-}
-
-/* === INPUT & TEXTAREA === */
-.elegant-form input,
-.elegant-form textarea {
-  width: 100%;
-  padding: 11px 14px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  transition: all .25s ease;
-  background: #fafafa;
-}
-
-.elegant-form input:focus,
-.elegant-form textarea:focus {
-  border-color: #111;
-  background: #fff;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
-}
-
-/* === BUTTON === */
-.elegant-form .btn-update {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(135deg, #111, #333);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .25s ease;
-}
-
-.elegant-form .btn-update:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* === MESSAGE === */
-.form-message {
-  margin-top: 14px;
-  font-size: 13px;
-  text-align: center;
 }
 
 /* === ANIMATION === */
@@ -4204,4 +4042,222 @@ input.num-product::-webkit-inner-spin-button {
 .championship {
   background-image: url(/images/galeri/championship.png);
   width: 100%;
+}
+
+/* SECTION PROFILE */
+.profile-section {
+  padding-top: 120px; /* JARAK DARI NAVBAR */
+  padding-bottom: 80px;
+  min-height: 100vh;
+  background: #f9f9f9;
+}
+
+/* CARD */
+.profile-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* FORM */
+.profile-form .form-group {
+  margin-bottom: 18px;
+}
+
+.profile-form label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.profile-form input,
+.profile-form textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.btn-update {
+  width: 100%;
+  margin-top: 10px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.btn-update:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .profile-section {
+    padding-top: 50px; /* JARAK DARI NAVBAR */
+  }
+}
+
+/*Modul inkubator*/
+
+/* Wrapper */
+.modul-wrapper {
+    padding-top: 140px;
+    padding-bottom: 80px;
+    background: #f8f9fa;
+}
+
+/* Card utama */
+.modul-card {
+    position: relative;
+    display: block;
+    height: 320px;
+    border-radius: 18px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+    transition: all .4s ease;
+}
+
+/* Overlay gelap */
+.modul-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.75)
+    );
+}
+
+/* Konten */
+.modul-content {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    color: #fff;
+    z-index: 2;
+}
+
+.modul-content h4 {
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.modul-content p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Tombol */
+.btn-modul {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    background: #e10600;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Hover effect */
+.modul-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+}
+
+.modul-card:hover .modul-overlay {
+    background: rgba(0,0,0,0.65);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    border-radius: 15px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-materi {
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.selesai1 {
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(0,0,0,.2);
+}
+
+#btnQuiz:not(.disabled) {
+    animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(40,167,69,.6); }
+    70% { box-shadow: 0 0 0 18px rgba(40,167,69,0); }
+    100% { box-shadow: 0 0 0 0 rgba(40,167,69,0); }
+}
+
+@media (max-width: 768px) {
+    .modul-wrapper {
+        padding-top: 50px;
+    }
+
+    .selesai1 {
+        width: 100%;
+        font-size: 18px;
+        padding: 18px 20px;
+    }
+}
+
+.notif-top {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    min-width: 300px;
+    max-width: 90%;
+    padding: 15px 25px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    animation: slideDown 0.6s ease forwards,
+               fadeOut 0.6s ease forwards 3.5s;
+}
+
+@keyframes slideDown {
+    to { top: 0; }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        top: -100px;
+    }
 }
