@@ -24,7 +24,7 @@ AddType application/x-httpd-php .html
     RewriteRule ^index(.*)$ index.php?url=$1 [L]
     RewriteRule ^artikel/([^/]+)/?$ artikel.php?slug=$1 [L,QSA]
     RewriteRule ^blog(.*)$ blog.php?url=$1 [L,QSA]
-    RewriteRule ^product(.*)$ product.php?url=$1 [L]
+    RewriteRule ^product(.*)$ product.php?url=$1 [L,QSA]
     RewriteRule ^contact(.*)$ contact.php?url=$1 [L]
     RewriteRule ^profile(.*)$ profile.php?url=$1 [L]
     RewriteRule ^inkubator(.*)$ modul.php?url=$1 [L]

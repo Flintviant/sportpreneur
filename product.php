@@ -57,25 +57,25 @@
 	    }
 	}
 
-	$sql_barang = $conn->query("
-	  SELECT 
-	    b.*, 
-	    k.nama_kategori
-	  FROM barang b
-	  JOIN kategori k 
-	    ON b.id_kategori = k.id_kategori
-	  ORDER BY b.id DESC
-	  LIMIT 4
-	");
+	// $sql_barang = $conn->query("
+	//   SELECT 
+	//     b.*, 
+	//     k.nama_kategori
+	//   FROM barang b
+	//   JOIN kategori k 
+	//     ON b.id_kategori = k.id_kategori
+	//   ORDER BY b.id DESC
+	//   LIMIT 4
+	// ");
 
-	if (!$sql_barang) {
-	  die('Query Error: ' . $conn->error);
-	}
+	// if (!$sql_barang) {
+	//   die('Query Error: ' . $conn->error);
+	// }
 
-	$produk = [];
-	while ($row = $sql_barang->fetch_assoc()) {
-	  $produk[] = $row;
-	}
+	// $produk = [];
+	// while ($row = $sql_barang->fetch_assoc()) {
+	//   $produk[] = $row;
+	// }
 
 	$kategori_btn = [
 	    1 => "Pesan",
@@ -105,7 +105,7 @@
 
 	// SEARCH (nama / merk)
 	if (!empty($_GET['q'])) {
-	    $where[] = "(nama_barang LIKE ? OR merk LIKE ?)";
+	    $where[] = "(b.nama_barang LIKE ? OR merk LIKE ?)";
 	    $q = '%' . $_GET['q'] . '%';
 	    $params[] = $q;
 	    $params[] = $q;
@@ -114,20 +114,49 @@
 
 	// FILTER KATEGORI
 	if (!empty($_GET['kategori'])) {
-	    $where[] = "id_kategori = ?";
+	    $where[] = "b.id_kategori = ?";
 	    $params[] = (int)$_GET['kategori'];
 	    $types .= "i";
 	}
 
 	// FILTER LOKASI
 	if (!empty($_GET['lokasi'])) {
-	    $where[] = "kota = ?";
+	    $where[] = "b.kota = ?";
 	    $params[] = $_GET['lokasi'];
 	    $types .= "s";
 	}
 
+	if (!empty($_GET['harga_min'])) {
+    $where[] = "b.harga_jual >= ?";
+    $params[] = (int)$_GET['harga_min'];
+    $types .= "i";
+	}
+
+	// FILTER HARGA MAX
+	if (!empty($_GET['harga_max'])) {
+	    $where[] = "b.harga_jual <= ?";
+	    $params[] = (int)$_GET['harga_max'];
+	    $types .= "i";
+	}
+
 	// BASE QUERY
-	$sql = "SELECT * FROM barang";
+	$sql = "
+	  SELECT 
+	    b.*, 
+	    k.nama_kategori
+	  FROM barang b
+	  JOIN kategori k 
+	    ON b.id_kategori = k.id_kategori
+	";
+
+	if (!$sql) {
+	  die('Query Error: ' . $conn->error);
+	}
+
+	// $produk = [];
+	// while ($row = $sql_barang->fetch_assoc()) {
+	//   $produk[] = $row;
+	// }
 
 	// WHERE
 	if ($where) {
@@ -137,19 +166,19 @@
 	// SORTING
 	switch ($_GET['sort'] ?? '') {
 	    case 'terbaru':
-	        $sql .= " ORDER BY id DESC";
+	        $sql .= " ORDER BY b.id_barang DESC";
 	        break;
 	    case 'termurah':
-	        $sql .= " ORDER BY harga_jual ASC";
+	        $sql .= " ORDER BY b.harga_jual ASC";
 	        break;
 	    case 'termahal':
-	        $sql .= " ORDER BY harga_jual DESC";
+	        $sql .= " ORDER BY b.harga_jual DESC";
 	        break;
 	    case 'az':
-	        $sql .= " ORDER BY nama_barang ASC";
+	        $sql .= " ORDER BY b.nama_barang ASC";
 	        break;
 	    default:
-	        $sql .= " ORDER BY id DESC";
+	        $sql .= " ORDER BY b.id_barang DESC";
 	}
 
 	$stmt = $conn->prepare($sql);
@@ -325,10 +354,6 @@
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<!-- <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
-						</a> -->
-
 						<a href="shoping-cart.php" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
@@ -354,50 +379,61 @@
 				</h6>
 			</div>
 
-			<!-- <form method="get" class="filter-bar d-flex gap-3 mb-4">
+			<form method="get" class="row g-2 mb-4">
 
-			   
-			    <input type="text"
-			           name="q"
-			           class="form-control"
-			           placeholder="Cari produk / jasa / event..."
-			           value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+			  <!-- Search Nama -->
+			  <div class="col-md-3">
+			    <input type="text" name="q" class="form-control"
+			           placeholder="Cari barang..."
+			           value="<?= $_GET['q'] ?? '' ?>">
+			  </div>
 
-			    
-			    <select name="kategori" class="form-select">
-			        <option value="">Semua Kategori</option>
-			        <?php foreach ($kategori_search as $kat): ?>
-			            <option value="<?= $kat['id_kategori'] ?>"
-			                <?= (($_GET['kategori'] ?? '') == $kat['id_kategori']) ? 'selected' : '' ?>>
-			                <?= htmlspecialchars($kat['nama_kategori']) ?>
-			            </option>
-			        <?php endforeach ?>
+			  <!-- Kategori -->
+			  <div class="col-md-2">
+			    <select name="kategori" class="form-control">
+			      <option value="">Semua Kategori</option>
+			      <?php foreach ($kategori_search as $k): ?>
+			        <option value="<?= $k['id_kategori'] ?>"
+			          <?= ($_GET['kategori'] ?? '') == $k['id_kategori'] ? 'selected' : '' ?>>
+			          <?= $k['nama_kategori'] ?>
+			        </option>
+			      <?php endforeach ?>
 			    </select>
+			  </div>
 
-			    
-			    <select name="lokasi" class="form-select">
-			        <option value="">Semua Lokasi</option>
-			        <?php foreach ($lokasi_list as $kota): ?>
-			            <option value="<?= $kota ?>"
-			                <?= (($_GET['lokasi'] ?? '') == $kota) ? 'selected' : '' ?>>
-			                <?= htmlspecialchars($kota) ?>
-			            </option>
-			        <?php endforeach ?>
+			  <!-- Harga Min -->
+			  <div class="col-md-2">
+			    <input type="number" name="harga_min" class="form-control"
+			           placeholder="Harga min"
+			           value="<?= $_GET['harga_min'] ?? '' ?>">
+			  </div>
+
+			  <!-- Harga Max -->
+			  <div class="col-md-2">
+			    <input type="number" name="harga_max" class="form-control"
+			           placeholder="Harga max"
+			           value="<?= $_GET['harga_max'] ?? '' ?>">
+			  </div>
+
+			  <!-- Sort -->
+			  <div class="col-md-2">
+			    <select name="sort" class="form-control">
+			      <option value="">Terbaru</option>
+			      <option value="termurah">Termurah</option>
+			      <option value="termahal">Termahal</option>
+			      <option value="az">A - Z</option>
 			    </select>
+			  </div>
 
-			    <select name="sort" class="form-select">
-			        <option value="">Urutkan</option>
-			        <option value="terbaru" <?= ($_GET['sort'] ?? '') == 'terbaru' ? 'selected' : '' ?>>Terbaru</option>
-			        <option value="termurah" <?= ($_GET['sort'] ?? '') == 'termurah' ? 'selected' : '' ?>>Harga Termurah</option>
-			        <option value="termahal" <?= ($_GET['sort'] ?? '') == 'termahal' ? 'selected' : '' ?>>Harga Termahal</option>
-			        <option value="az" <?= ($_GET['sort'] ?? '') == 'az' ? 'selected' : '' ?>>A - Z</option>
-			    </select>
+			  <div class="col-md-1">
+			    <button class="btn btn-dark w-100">Cari</button>
+			  </div>
 
-			    <button class="btn btn-dark">Cari</button>
-			</form> -->
+			</form>
+
 
 			<div class="row isotope-grid">
-				<?php foreach ($produk as $produk): ?>
+				<?php foreach ($produk_filter as $produk): ?>
 				<div class="col-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 				  <div class="block2">
 
@@ -441,12 +477,6 @@
 				<?php endforeach ?>
 			</div>
 
-			<!-- Load more -->
-			<!-- <div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
-			</div> -->
 		</div>
 	</div>
 		
