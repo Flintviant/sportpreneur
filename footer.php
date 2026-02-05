@@ -95,15 +95,19 @@
 <!--===============================================================================================-->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-		function showToast(type, message) {
+		function showToast(type, message, redirect = null) {
 		    Swal.fire({
 		        toast: true,
-		        position: 'top-end',
+		        position: 'center',
 		        icon: type,
 		        title: message,
 		        showConfirmButton: false,
 		        timer: 3000,
-		        timerProgressBar: true
+		        timerProgressBar: true,
+		        customClass: {
+		            popup: 'big-toast',
+		            title: 'big-toast-title'
+		        }
 		    }).then(() => {
 		        if (redirect) {
 		            window.location.href = redirect;

@@ -354,16 +354,16 @@
 				</h6>
 			</div>
 
-			<form method="get" class="filter-bar d-flex gap-3 mb-4">
+			<!-- <form method="get" class="filter-bar d-flex gap-3 mb-4">
 
-			    <!-- SEARCH -->
+			   
 			    <input type="text"
 			           name="q"
 			           class="form-control"
 			           placeholder="Cari produk / jasa / event..."
 			           value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
 
-			    <!-- KATEGORI -->
+			    
 			    <select name="kategori" class="form-select">
 			        <option value="">Semua Kategori</option>
 			        <?php foreach ($kategori_search as $kat): ?>
@@ -374,7 +374,7 @@
 			        <?php endforeach ?>
 			    </select>
 
-			    <!-- LOKASI -->
+			    
 			    <select name="lokasi" class="form-select">
 			        <option value="">Semua Lokasi</option>
 			        <?php foreach ($lokasi_list as $kota): ?>
@@ -385,7 +385,6 @@
 			        <?php endforeach ?>
 			    </select>
 
-			    <!-- URUTKAN -->
 			    <select name="sort" class="form-select">
 			        <option value="">Urutkan</option>
 			        <option value="terbaru" <?= ($_GET['sort'] ?? '') == 'terbaru' ? 'selected' : '' ?>>Terbaru</option>
@@ -395,7 +394,7 @@
 			    </select>
 
 			    <button class="btn btn-dark">Cari</button>
-			</form>
+			</form> -->
 
 			<div class="row isotope-grid">
 				<?php foreach ($produk as $produk): ?>
