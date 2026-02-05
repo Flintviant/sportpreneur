@@ -93,43 +93,25 @@
 <!--===============================================================================================-->
 	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-		$('.add-cart').on('click', function(e){
-			e.preventDefault();
-		});
-
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
-		});
-
-		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
-
-		/*---------------------------------------------*/
-
-		$('.add-cart').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-	
+		function showToast(type, message) {
+		    Swal.fire({
+		        toast: true,
+		        position: 'top-end',
+		        icon: type,
+		        title: message,
+		        showConfirmButton: false,
+		        timer: 3000,
+		        timerProgressBar: true
+		    }).then(() => {
+		        if (redirect) {
+		            window.location.href = redirect;
+		        }
+		    });
+		}
 	</script>
+
 <!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
@@ -180,16 +162,47 @@
 		    btn.onclick = e => {
 		        e.preventDefault();
 
-		        fetch('cart_add.php', {
-		            method: 'POST',
-		            headers: {'Content-Type': 'application/json'},
-		            body: JSON.stringify({
-		                id: btn.dataset.id,
-		                nama: btn.dataset.nama,
-		                foto: btn.dataset.foto,
-		                harga: btn.dataset.harga
+		        const kategori = btn.dataset.kategori;
+
+		        if (kategori == 1) {
+		            fetch('cart_add.php', {
+		                method: 'POST',
+		                headers: {'Content-Type': 'application/json'},
+		                body: JSON.stringify({
+		                    id: btn.dataset.id,
+		                    nama: btn.dataset.nama,
+		                    foto: btn.dataset.foto,
+		                    harga: btn.dataset.harga
+		                })
+		            }).then(() => {
+		                renderCart();
+		                showToast('success', 'Produk ditambahkan ke cart');
+		            });
+
+		        } else {
+		            fetch('kategori_action.php', {
+		                method: 'POST',
+		                headers: {'Content-Type': 'application/json'},
+		                body: JSON.stringify({
+		                    id: btn.dataset.id,
+		                    kategori: kategori
+		                })
 		            })
-		        }).then(() => renderCart());
+		            .then(res => res.json())
+		            .then(data => {
+		                if (data.login === false) {
+		                    showToast('warning', data.message, 'login.php');
+		                    return;
+		                }
+
+		                // ✅ BERHASIL
+		                if (data.status) {
+		                    showToast('success', data.message, data.redirect);
+		                } else {
+		                    showToast('error', data.message);
+		                }
+		            });
+		        }
 		    };
 		});
 

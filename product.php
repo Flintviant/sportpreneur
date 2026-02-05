@@ -84,13 +84,91 @@
 	    4 => "Gabung Membership",
 	    5 => "Hubungi Pelatih"
 	];
+
+	// ambil kategori
+	$kategori_search = [];
+	$qKat = $conn->query("SELECT id_kategori, nama_kategori FROM kategori ORDER BY nama_kategori ASC");
+	while ($row = $qKat->fetch_assoc()) {
+	    $kategori_search[] = $row;
+	}
+
+	// ambil lokasi unik
+	$lokasi_list = [];
+	$qLok = $conn->query("SELECT DISTINCT kota FROM barang WHERE kota IS NOT NULL AND kota != '' ORDER BY kota ASC");
+	while ($row = $qLok->fetch_assoc()) {
+	    $lokasi_list[] = $row['kota'];
+	}
+
+	$where = [];
+	$params = [];
+	$types = "";
+
+	// SEARCH (nama / merk)
+	if (!empty($_GET['q'])) {
+	    $where[] = "(nama_barang LIKE ? OR merk LIKE ?)";
+	    $q = '%' . $_GET['q'] . '%';
+	    $params[] = $q;
+	    $params[] = $q;
+	    $types .= "ss";
+	}
+
+	// FILTER KATEGORI
+	if (!empty($_GET['kategori'])) {
+	    $where[] = "id_kategori = ?";
+	    $params[] = (int)$_GET['kategori'];
+	    $types .= "i";
+	}
+
+	// FILTER LOKASI
+	if (!empty($_GET['lokasi'])) {
+	    $where[] = "kota = ?";
+	    $params[] = $_GET['lokasi'];
+	    $types .= "s";
+	}
+
+	// BASE QUERY
+	$sql = "SELECT * FROM barang";
+
+	// WHERE
+	if ($where) {
+	    $sql .= " WHERE " . implode(" AND ", $where);
+	}
+
+	// SORTING
+	switch ($_GET['sort'] ?? '') {
+	    case 'terbaru':
+	        $sql .= " ORDER BY id DESC";
+	        break;
+	    case 'termurah':
+	        $sql .= " ORDER BY harga_jual ASC";
+	        break;
+	    case 'termahal':
+	        $sql .= " ORDER BY harga_jual DESC";
+	        break;
+	    case 'az':
+	        $sql .= " ORDER BY nama_barang ASC";
+	        break;
+	    default:
+	        $sql .= " ORDER BY id DESC";
+	}
+
+	$stmt = $conn->prepare($sql);
+
+	if ($params) {
+	    $stmt->bind_param($types, ...$params);
+	}
+
+	$stmt->execute();
+	$produk_filter = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Product</title>
+	<title>Marketplace</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -263,15 +341,61 @@
 	<!-- Product -->
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
-			<div class="flex-w flex-sb-m p-b-52">
+			<!-- <div class="flex-w flex-sb-m p-b-52">
 				<img src="<?=$url_utama?>images/banner-shop.png" style="width: 100%;border-radius: 10%;">
+			</div> -->
+
+			<div class="mtext-107 cl2 plh2 mb-5 text-center">
+				<h2 class="ltext-103 redefine-title text-center">
+					Tempat Jual-Beli & Kolaborasi Ekonomi Olahraga
+				</h2>
+				<h6>
+					Disini, produk dan jasa olahraga tidak sekadar dipajang, tapi menjadi <b> mesin transaksi, penyerap tenaga kerja, dan bukti nyata pertumbuhan ekonomi sport. </b>
+				</h6>
 			</div>
 
-			<div class="mtext-107 cl2 size-114 plh2 mb-5 text-center">
-				<h2 class="ltext-103 redefine-title text-center">
-					Produk Kami
-				</h2>	
-			</div>
+			<form method="get" class="filter-bar d-flex gap-3 mb-4">
+
+			    <!-- SEARCH -->
+			    <input type="text"
+			           name="q"
+			           class="form-control"
+			           placeholder="Cari produk / jasa / event..."
+			           value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+
+			    <!-- KATEGORI -->
+			    <select name="kategori" class="form-select">
+			        <option value="">Semua Kategori</option>
+			        <?php foreach ($kategori_search as $kat): ?>
+			            <option value="<?= $kat['id_kategori'] ?>"
+			                <?= (($_GET['kategori'] ?? '') == $kat['id_kategori']) ? 'selected' : '' ?>>
+			                <?= htmlspecialchars($kat['nama_kategori']) ?>
+			            </option>
+			        <?php endforeach ?>
+			    </select>
+
+			    <!-- LOKASI -->
+			    <select name="lokasi" class="form-select">
+			        <option value="">Semua Lokasi</option>
+			        <?php foreach ($lokasi_list as $kota): ?>
+			            <option value="<?= $kota ?>"
+			                <?= (($_GET['lokasi'] ?? '') == $kota) ? 'selected' : '' ?>>
+			                <?= htmlspecialchars($kota) ?>
+			            </option>
+			        <?php endforeach ?>
+			    </select>
+
+			    <!-- URUTKAN -->
+			    <select name="sort" class="form-select">
+			        <option value="">Urutkan</option>
+			        <option value="terbaru" <?= ($_GET['sort'] ?? '') == 'terbaru' ? 'selected' : '' ?>>Terbaru</option>
+			        <option value="termurah" <?= ($_GET['sort'] ?? '') == 'termurah' ? 'selected' : '' ?>>Harga Termurah</option>
+			        <option value="termahal" <?= ($_GET['sort'] ?? '') == 'termahal' ? 'selected' : '' ?>>Harga Termahal</option>
+			        <option value="az" <?= ($_GET['sort'] ?? '') == 'az' ? 'selected' : '' ?>>A - Z</option>
+			    </select>
+
+			    <button class="btn btn-dark">Cari</button>
+			</form>
 
 			<div class="row isotope-grid">
 				<?php foreach ($produk as $produk): ?>
@@ -303,6 +427,7 @@
 				      <a href="#"
 				         class="btn-add-cart add-cart"
 				         data-id="<?= $produk['id_barang'] ?>"
+				         data-kategori="<?= $produk['id_kategori'] ?>"
 				         data-nama="<?= htmlspecialchars($produk['nama_barang']) ?>"
 				         data-foto="<?= htmlspecialchars($produk['foto_produk']) ?>"
 				         data-harga="<?= $produk['harga_jual'] ?>">
