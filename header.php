@@ -27,9 +27,9 @@
 					        <li class="<?= activeMenu('/blog', $current) ?>">
 					            <a href="/blog">Blog</a>
 					        </li>
-					        <!-- <li class="<?= activeMenu('/about', $current) ?>">
-					            <a href="/about">About</a>
-					        </li> -->
+					        <li class="<?= activeMenu('/sponsor', $current) ?>">
+					            <a href="/sponsor">Sponsor</a>
+					        </li>
 					        <li class="<?= activeMenu('/contact', $current) ?>">
 					            <a href="/contact">Contact</a>
 					        </li>
@@ -107,9 +107,9 @@
 					<a href="/blog">Blog</a>
 				</li>
 
-				<!-- <li>
-					<a href="/about">About</a>
-				</li> -->
+				<li>
+					<a href="/sponsor">Sponsor</a>
+				</li>
 
 				<li>
 					<a href="/contact">Contact</a>

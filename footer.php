@@ -363,6 +363,76 @@
 		}
 	</script>
 
+	<script>
+		function openDetail(el) {
+		  const id = el.getAttribute('data-id');
+		  const judul = el.getAttribute('data-judul');
+
+		  // SET DATA UNTUK DOWNLOAD
+		  document.getElementById('proposalSponsorId').value = id;
+		  document.getElementById('proposalSponsorNama').value = judul;
+
+		  document.getElementById('detailModal').style.display = 'flex';
+		  document.getElementById('modalContent').innerHTML = 'Memuat data...';
+
+		  fetch('get_sponsor_detail.php?id=' + id)
+		    .then(res => res.text())
+		    .then(data => {
+		      document.getElementById('modalContent').innerHTML = data;
+		    });
+		}
+	</script>
+
+	<script>
+		function downloadProposal() {
+		  const id = document.getElementById('proposalSponsorId').value;
+		  const nama = document.getElementById('proposalSponsorNama').value;
+
+		  if (!id) {
+		    alert('Data program tidak ditemukan');
+		    return;
+		  }
+
+		  window.location.href =
+		    'download_proposal.php?id=' + id +
+		    '&nama=' + encodeURIComponent(nama);
+		}
+	</script>
+
+
+	<script>
+		function openContactModal(el) {
+		  document.getElementById('contactModal').style.display = 'flex';
+
+		  document.getElementById('cm-id').value = el.dataset.id;
+		  document.getElementById('cm-minat').value =
+		    el.dataset.jenis + ' — ' + el.dataset.judul;
+		}
+
+		function closeContact() {
+		  document.getElementById('contactModal').style.display = 'none';
+		}
+
+		function submitContact() {
+		  const form = document.getElementById('contactForm');
+		  const data = new FormData(form);
+
+		  fetch('save_kontak.php', {
+		    method: 'POST',
+		    body: data
+		  })
+		  .then(res => res.json())
+		  .then(res => {
+		    if (res.status === 'ok') {
+		      alert('Terima kasih! Tim kami akan menghubungi Anda.');
+		      closeContact();
+		      form.reset();
+		    } else {
+		      alert('Gagal menyimpan data.');
+		    }
+		  });
+		}
+	</script>
 
 </body>
 </html>

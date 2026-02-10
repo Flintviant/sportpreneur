@@ -280,3 +280,31 @@
 
 
 })(jQuery);
+
+    function openDetail() {
+      document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function closeDetail() {
+      document.getElementById('detailModal').style.display = 'none';
+    }
+
+    document.getElementById('proposalSponsorId').value = el.dataset.id;
+    document.getElementById('proposalSponsorNama').value = el.dataset.judul;
+
+
+    function downloadProposal() {
+      const id = document.getElementById('proposalSponsorId').value;
+      const nama = document.getElementById('proposalSponsorNama').value;
+
+      if (!id) {
+        alert('Data program tidak ditemukan');
+        return;
+      }
+
+      // redirect ke PHP download
+      window.location.href = 
+        'download_proposal.php?id=' + id +
+        '&nama=' + encodeURIComponent(nama);
+    }
+
