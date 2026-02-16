@@ -30,8 +30,8 @@
 					        <li class="<?= activeMenu('/sponsor', $current) ?>">
 					            <a href="/sponsor">Sponsor</a>
 					        </li>
-					        <li class="<?= activeMenu('/contact', $current) ?>">
-					            <a href="/contact">Contact</a>
+					        <li class="<?= activeMenu('/event', $current) ?>">
+					            <a href="/event">Event</a>
 					        </li>
 					    </ul>
 					</div>
@@ -112,7 +112,7 @@
 				</li>
 
 				<li>
-					<a href="/contact">Contact</a>
+					<a href="/event">Event</a>
 				</li>
 			</ul>
 		</div>

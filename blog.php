@@ -23,7 +23,7 @@
 	</div>
 
 	<!-- Content page -->
-	<section class="bg0 p-t-62 p-b-60">
+	<section class="bg0 p-t-62 p-b-60" style="background-color: #0F1426;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-lg-9 p-b-80">
@@ -45,7 +45,7 @@
 
 								    <div class="p-t-32">
 								        <h4 class="p-b-15">
-								            <a href="<?= $url_utama ?>artikel/<?= urlencode($artikel['slug']) ?>" class="ltext-108 cl2 hov-cl1 trans-04">
+								            <a href="<?= $url_utama ?>artikel/<?= urlencode($artikel['slug']) ?>" class="ltext-108 cl2 hov-cl1 trans-04 text-white">
 								                <?= htmlspecialchars($artikel['judul']) ?>
 								            </a>
 								        </h4>
@@ -125,7 +125,7 @@
 						</div> -->
 
 						<div class="p-t-65">
-							<h4 class="mtext-112 cl2 p-b-33">
+							<h4 class="mtext-112 cl2 p-b-33 text-white">
 								Produk
 							</h4>
 

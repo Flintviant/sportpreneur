@@ -399,7 +399,6 @@
 		}
 	</script>
 
-
 	<script>
 		function openContactModal(el) {
 		  document.getElementById('contactModal').style.display = 'flex';
@@ -426,6 +425,74 @@
 		    if (res.status === 'ok') {
 		      alert('Terima kasih! Tim kami akan menghubungi Anda.');
 		      closeContact();
+		      form.reset();
+		    } else {
+		      alert('Gagal menyimpan data.');
+		    }
+		  });
+		}
+	</script>
+
+	<script>
+		function sponsorEventSport(el) {
+		  document.getElementById('sponsorEvent').style.display = 'flex';
+
+		  document.getElementById('ev-ide').value = el.dataset.ide;
+		  document.getElementById('ev-minat').value =
+		    el.dataset.event + ' — ' + el.dataset.nmeo;
+		}
+
+		function closeEvent() {
+		  document.getElementById('sponsorEvent').style.display = 'none';
+		}
+
+		function submitEvent() {
+		  const form = document.getElementById('contactFormEvent');
+		  const data = new FormData(form);
+
+		  fetch('save_kontak_event.php', {
+		    method: 'POST',
+		    body: data
+		  })
+		  .then(res => res.json())
+		  .then(res => {
+		    if (res.status === 'ok') {
+		      alert('Terima kasih! Tim kami akan menghubungi Anda.');
+		      closeEvent();
+		      form.reset();
+		    } else {
+		      alert('Gagal menyimpan data.');
+		    }
+		  });
+		}
+	</script>
+
+	<script>
+		function daftarPeserta(el) {
+		  document.getElementById('pesertaEvent').style.display = 'flex';
+
+		  document.getElementById('ps-id').value = el.dataset.idp;
+		  document.getElementById('ps-event').value =
+		    el.dataset.ev + ' — ' + el.dataset.eo;
+		}
+
+		function closePesertaEvent() {
+		  document.getElementById('pesertaEvent').style.display = 'none';
+		}
+
+		function submitPesertaEvent() {
+		  const form = document.getElementById('pesertaFormEvent');
+		  const data = new FormData(form);
+
+		  fetch('save_peserta_event.php', {
+		    method: 'POST',
+		    body: data
+		  })
+		  .then(res => res.json())
+		  .then(res => {
+		    if (res.status === 'ok') {
+		      alert('Terima kasih! Tim kami akan menghubungi Anda.');
+		      closePesertaEvent();
 		      form.reset();
 		    } else {
 		      alert('Gagal menyimpan data.');

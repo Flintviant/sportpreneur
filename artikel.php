@@ -110,7 +110,7 @@
 
 	    <!-- ================= HEADER DESKTOP ================= -->
 	    <div class="container-menu-desktop">
-	        <div class="wrap-menu-desktop how-shadow1">
+	        <div class="wrap-menu-desktop how-shadow1" style="background-color: #0F1426;">
 	            <nav class="limiter-menu-desktop container">
 
 	                <!-- Logo -->
@@ -126,7 +126,7 @@
 	                        <li><a href="/product">Shop</a></li>
 	                        <li class="active-menu"><a href="/blog">Blog</a></li>
 	                        <li><a href="/sponsor">Sponsor</a></li>
-	                        <li><a href="/contact">Contact</a></li>
+	                        <li><a href="/event">Event</a></li>
 	                    </ul>
 	                </div>
 
@@ -194,7 +194,7 @@
 	            <li><a href="/product">Shop</a></li>
 	            <li><a href="/blog">Blog</a></li>
 	            <li><a href="/sponsor">Sponsor</a></li>
-	            <li><a href="/contact">Contact</a></li>
+	            <li><a href="/event">Event</a></li>
 	        </ul>
 	    </div>
 
@@ -260,7 +260,7 @@
 
 
 	<!-- Content page -->
-	<section class="bg0 p-t-52 p-b-20">
+	<section class="bg0 p-t-52 p-b-20" style="background-color: #0F1426;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-lg-9 p-b-80">

@@ -8,10 +8,10 @@ include 'head.php';
 </div>
 <?php unset($_SESSION['notif']); endif; ?>
 
-<section class="modul-wrapper">
+<section class="modul-wrapper" style="background-color: #0F1426;">
   <div class="container">
 
-    <h2 class="ltext-103 redefine-title text-center mb-5">Modul Pembelajaran</h2>
+    <h2 class="ltext-103 redefine-title text-center mb-5 text-white">Modul Pembelajaran</h2>
 
     <div class="row">
 

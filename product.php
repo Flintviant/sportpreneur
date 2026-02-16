@@ -238,7 +238,7 @@
 
 	    <!-- ================= HEADER DESKTOP ================= -->
 	    <div class="container-menu-desktop">
-	        <div class="wrap-menu-desktop how-shadow1">
+	        <div class="wrap-menu-desktop how-shadow1" style="background-color: #0F1426;">
 	            <nav class="limiter-menu-desktop container">
 
 	                <!-- Logo -->
@@ -254,7 +254,7 @@
 	                        <li class="active-menu"><a href="/product">Shop</a></li>
 	                        <li><a href="/blog">Blog</a></li>
 	                        <li><a href="/sponsor">Sponsor</a></li>
-	                        <li><a href="/contact">Contact</a></li>
+	                        <li><a href="/event">Event</a></li>
 	                    </ul>
 	                </div>
 
@@ -321,7 +321,7 @@
 	            <li><a href="/product">Shop</a></li>
 	            <li><a href="/blog">Blog</a></li>
 	            <li><a href="/sponsor">Sponsor</a></li>
-	            <li><a href="/contact">Contact</a></li>
+	            <li><a href="/event">Event</a></li>
 	        </ul>
 	    </div>
 
@@ -364,14 +364,11 @@
 	</div>
 	
 	<!-- Product -->
-	<div class="bg0 m-t-23 p-b-140">
+	<div class="bg0 p-b-140" style="background-color: #0F1426;">
 		<div class="container">
-			<!-- <div class="flex-w flex-sb-m p-b-52">
-				<img src="<?=$url_utama?>images/banner-shop.png" style="width: 100%;border-radius: 10%;">
-			</div> -->
 
 			<div class="mtext-107 cl2 plh2 mb-5 text-center">
-				<h2 class="ltext-103 redefine-title text-center">
+				<h2 class="ltext-103 redefine-title text-center text-white">
 					Tempat Jual-Beli & Kolaborasi Ekonomi Olahraga
 				</h2>
 				<h6>

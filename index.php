@@ -34,10 +34,10 @@
 	    </div>
 
 		<!-- Product -->
-		<section class="p-t-23 p-b-140 mt-5">
+		<section class="p-t-23 p-b-140" style="background-color: #0F1426;padding-top: 100px;">
 			<div class="container">
 				<div class="p-b-10">
-					<h3 class="ltext-103 redefine-title text-center">
+					<h3 class="ltext-103 redefine-title text-center text-white">
 						SPORTMARKET
 					</h3>
 				</div>
@@ -90,7 +90,7 @@
 
 	</section>
 
-	<section class="event-gallery">
+	<section class="event-gallery" style="background-color: #0F1426;">
 	  	<div class="container">
 
 		    <h3 class="event-title text-center">
@@ -140,9 +140,9 @@
 	</section>
 
 		  <!-- ================= PARTNERS ================= -->
-	<section class="partner-section p-t-60 p-b-90">
+	<section class="partner-section p-t-60 p-b-90" style="background-color: #0F1426;">
 	    <div class="container">
-	      <h3 class="ltext-103 redefine-title text-center mb-5">OUR PARTNERS</h3>
+	      <h3 class="ltext-103 redefine-title text-center mb-5 text-white">OUR PARTNERS</h3>
 	      <div class="partner-slider">
 	        <div class="partner-item"><span>NIKE<br>INDONESIA</span></div>
 	        <div class="partner-item"><span>ADIDAS<br>SPORTS</span></div>
@@ -155,10 +155,10 @@
 	</section>
 
 	  <!-- ================= TEAM ================= -->
-	<section class="team-section p-t-40 p-b-90">
+	<section class="team-section p-t-40 p-b-90" style="background-color: #0F1426;">
 	    <div class="container">
 
-		    <h3 class="team-title text-center">
+		    <h3 class="team-title text-center text-white">
 		      MEET OUR TEAM
 		    </h3>
 
@@ -202,10 +202,10 @@
 	</section>
 
 	  <!-- ================= IMPACT ================= -->
-	<section class="impact-section p-t-40 p-b-90">
+	<section class="impact-section p-t-40 p-b-90" style="background-color: #0F1426;">
 		<div class="container">
 
-		    <h3 class="team-title text-center mb-5">
+		    <h3 class="team-title text-center mb-5 text-white">
 		      OUR IMPACT
 		    </h3>
 

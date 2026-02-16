@@ -56,8 +56,13 @@
 	                    <option value="In-kind">In-kind</option>
 	                </select>
 	            </div>
-	            <div class="col-md-2 d-flex align-items-end filter-actions">
-	                <button type="submit" class="btn-primary w-100">Terapkan</button>
+	           <div class="col-md-2 d-flex align-items-end filter-action gap-2">
+	                <button type="submit" class="btn btn-primary w-100">
+	                    Terapkan
+	                </button>
+	                <a href="?" class="btn btn-outline w-100 text-dark ml-2">
+	                    Reset
+	                </a>
 	            </div>
 	        </div>
 	    </form>
@@ -71,7 +76,7 @@
 	                        <span class="badge"><?= $row['jenis_kegiatan'] ?></span>
 	                        <h4><?= htmlspecialchars($row['nama_kegiatan']) ?></h4>
 	                        <div class="sponsor-meta">
-	                            📍 <?= $row['kota_kegiatan'] ?> • 🎯 <?= $row['kategori'] ?>
+	                            <?= $row['kota_kegiatan'] ?> • <?= $row['kategori'] ?>
 	                        </div>
 
 	                        <span class="badge"><?= $row['kebutuhan'] ?></span>

@@ -28,9 +28,7 @@ AddType application/x-httpd-php .html
     RewriteRule ^sponsor(.*)$ sponsor.php?url=$1 [L,QSA]
     RewriteRule ^profile(.*)$ profile.php?url=$1 [L]
     RewriteRule ^inkubator(.*)$ modul.php?url=$1 [L]
-    # RewriteRule ^belanja(.*)$ shop.html?url=$1 [L]
-    # RewriteRule ^lihatartikel(.*)$ blog/lihatArtikel.html?url=$1 [L]
-    # RewriteRule ^promo(.*)$ promo.php?url=$1 [L]
+    RewriteRule ^event(.*)$ event.php?url=$1 [L,QSA]
 
     # ============================================================
     # 🔹 BLOG SEO URL (SLUG)
