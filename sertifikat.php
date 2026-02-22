@@ -71,11 +71,11 @@ $qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
 
 <div class="sertifikat-wrapper">
 
-    <div class="text-center mb-5">
+    <!-- <div class="text-center mb-5">
         <button onclick="downloadPDF()" class="btn btn-warning px-4 py-2">
             Download PDF Sertifikat
         </button>
-    </div>
+    </div> -->
 
     <img src="images/sertifikat.jpeg" class="bg-sertifikat">
 
