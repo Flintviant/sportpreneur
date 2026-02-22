@@ -4,6 +4,7 @@ include 'session_modal.php';
 include 'koneksi.php';
 
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 $id_member = $_SESSION['id_member'];
 $id_sub_modul = $_GET['id_sub_modul'] ?? 0;
@@ -24,33 +25,81 @@ if (!$data) {
     die("Sertifikat tidak ditemukan");
 }
 
-$qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
+$qr_link = rtrim($url_utama, '/') . "/verifikasi.php?kode=" . urlencode($data['kode_sertifikat']);
+
+$options = new Options();
+$options->set('isRemoteEnabled', true); // penting untuk load gambar & QR
+$dompdf = new Dompdf($options);
 
 $html = '
 <style>
-body { font-family: sans-serif; text-align:center; }
-.wrapper { position: relative; width: 100%; }
-.nama { font-size: 30px; font-weight: bold; color:#F7931E; margin-top:200px; }
-.sub { margin-top:20px; font-size:18px; }
-.tgl { margin-top:10px; font-size:14px; }
+@page {
+    margin: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.sertifikat-wrapper {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+}
+.bg-sertifikat {
+    width: 100%;
+    height: 100%;
+}
+.nama-member {
+    position: absolute;
+    top: 260px;
+    width: 100%;
+    text-align: center;
+    font-size: 42px;
+    font-weight: bold;
+    color: #F7931E;
+}
+.nama-submodul {
+    position: absolute;
+    top: 450px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+.tanggal {
+    position: absolute;
+    top: 490px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+}
+.qr {
+    position: absolute;
+    bottom: 80px;
+    right: 120px;
+}
 </style>
 
-<div class="wrapper">
-    <img src="'.$url_utama.'images/sertifikat.jpeg" width="100%">
-    <div class="nama">'.strtoupper($data['nm_member']).'</div>
-    <div class="sub">
+<div class="sertifikat-wrapper">
+    <img src="'.$url_utama.'images/sertifikat.jpeg" class="bg-sertifikat">
+
+    <div class="nama-member">
+        '.strtoupper($data['nm_member']).'
+    </div>
+
+    <div class="nama-submodul">
         Successfully completed <b>'.$data['nama_sub_modul'].'</b>
     </div>
-    <div class="tgl">
+
+    <div class="tanggal">
         '.date('d F Y', strtotime($data['tanggal'])).'
     </div>
-    <div style="margin-top:30px;">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data='.urlencode($qr_link).'">
+
+    <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data='.urlencode($qr_link).'">
     </div>
 </div>
 ';
 
-$dompdf = new Dompdf();
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
