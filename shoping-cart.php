@@ -79,7 +79,7 @@
 
 	    <!-- ================= HEADER DESKTOP ================= -->
 	    <div class="container-menu-desktop">
-	        <div class="wrap-menu-desktop how-shadow1">
+	        <div class="wrap-menu-desktop how-shadow1" style="background-color: #0F1426;">
 	            <nav class="limiter-menu-desktop container">
 
 	                <!-- Logo -->
@@ -218,7 +218,7 @@
 		
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<form class="bg0 p-t-75 p-b-85" style="background-color: #0F1426;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">

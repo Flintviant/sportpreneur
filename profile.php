@@ -2,7 +2,7 @@
 	include 'head.php';
 ?>
 
-	<section class="profile-section">
+	<section class="profile-section" style="background-color: #0F1426;">
 	  	<div class="container">
 		    <div class="profile-card">
 
