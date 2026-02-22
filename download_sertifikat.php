@@ -74,7 +74,7 @@ body {
 }
 .qr {
     position: absolute;
-    bottom: 80px;
+    bottom: 120px;
     right: 120px;
 }
 </style>
