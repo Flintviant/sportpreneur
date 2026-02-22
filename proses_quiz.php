@@ -152,7 +152,7 @@ if ($status === 'LULUS' && !$pernahLulus) {
     <?php endif; ?>
 
     <div class="mt-5">
-      <a href="<?= $url_utama ?>sub_modul.php?id_modul=2" class="btn btn-secondary px-4">
+      <a href="<?= $url_utama ?>sub_modul.php?id_modul=1" class="btn btn-secondary px-4">
         Kembali ke Modul
       </a>
     </div>
