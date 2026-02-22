@@ -67,15 +67,39 @@ $qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
     bottom: 80px;
     right: 120px;
 }
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    .sertifikat-wrapper,
+    .sertifikat-wrapper * {
+        visibility: visible;
+    }
+
+    .sertifikat-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    @page {
+        size: A4 landscape;
+        margin: 0;
+    }
+
+}
 </style>
 
 <div class="sertifikat-wrapper">
 
     <div class="text-center mb-5">
-        <a href="download_sertifikat.php?id_sub_modul=<?= $id_sub_modul ?>"
-           class="btn btn-warning px-4 py-2">
-           Download PDF Sertifikat
-        </a>
+        <button onclick="downloadPDF()" class="btn btn-warning px-4 py-2">
+            Download PDF Sertifikat
+        </button>
     </div>
 
     <img src="images/sertifikat.jpeg" class="bg-sertifikat">
@@ -97,3 +121,9 @@ $qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
     </div>
 
 </div>
+
+<script>
+function downloadPDF() {
+    window.print();
+}
+</script>
