@@ -3,8 +3,15 @@ require 'auth.php';
 requireLogin();
 
 require_once __DIR__ . '/session_modal.php';
-$id_modul = $_GET['id_modul'];
+require_once 'koneksi.php';
+// $id_modul = $_GET['id_modul'];
+$id_sub_modul = $_GET['id_sub_modul'];
 $id_member = $_SESSION['id_member'];
+
+$sub = $conn->query("
+    SELECT * FROM sub_modul 
+    WHERE id_sub_modul = $id_sub_modul
+")->fetch_assoc();
 
 // echo '<pre>';
 // print_r($_SESSION);
@@ -17,19 +24,19 @@ $id_member = $_SESSION['id_member'];
 <section class="modul-wrapper">
   <div class="container">
 
-    <h2 class="ltext-103 redefine-title text-center mb-5">Materi Pembelajaran <?= $id_modul ?></h2>
+    <h2 class="ltext-103 redefine-title text-center mb-5">Materi Pembelajaran <?= htmlspecialchars($sub['nama_sub_modul']) ?></h2>
 
     <div class="video-wrapper text-center mb-4">
       <iframe
         id="videoMateri"
-        src="https://www.youtube.com/embed/89QEZGxWYZc?enablejsapi=1"
+        src="<?=$sub['materi']?>"
         frameborder="0"
         allowfullscreen>
       </iframe>
     </div>
 
     <div class="text-center mt-4">
-      <a href="quiz.php?id_modul=<?= $id_modul ?>" 
+      <a href="quiz.php?id_sub_modul=<?= $id_sub_modul ?>" 
          id="btnQuiz"
          class="btn btn-success selesai1 text-white disabled"
          aria-disabled="true">

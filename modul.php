@@ -1,58 +1,49 @@
 <?php
 include 'head.php';
-?>
+include 'koneksi.php';
 
-<?php if (!empty($_SESSION['notif'])): ?>
-<div id="notif-top" class="notif-top alert alert-success text-center">
-    <?= $_SESSION['notif'] ?>
-</div>
-<?php unset($_SESSION['notif']); endif; ?>
+$modul = $conn->query("
+    SELECT id_modul, nama_modul, deskripsi, gambar 
+    FROM modul 
+    WHERE status = 'aktif'
+    ORDER BY id_modul ASC
+");
+?>
 
 <section class="modul-wrapper" style="background-color: #0F1426;">
   <div class="container">
 
-    <h2 class="ltext-103 redefine-title text-center mb-5 text-white">Modul Pembelajaran</h2>
+    <h2 class="ltext-103 redefine-title text-center mb-5 text-white">
+      Modul Pembelajaran
+    </h2>
 
     <div class="row">
 
-      <!-- Modul Bisnis -->
-      <div class="col-md-4 mb-4">
-        <a href="materi.php?id_modul=1" class="modul-card" 
-           style="background-image:url('images/modul/bisnis.jpg')">
-          <div class="modul-overlay"></div>
-          <div class="modul-content">
-            <h4>Bisnis</h4>
-            <p>Materi dasar bisnis & manajemen</p>
-            <span class="btn-modul">Mulai</span>
-          </div>
-        </a>
-      </div>
+      <?php if ($modul->num_rows > 0): ?>
+        <?php while ($m = $modul->fetch_assoc()): ?>
+          
+          <div class="col-md-4 mb-4">
+            <a href="sub_modul.php?id_modul=<?= $m['id_modul'] ?>" 
+               class="modul-card"
+               style="background-image:url('images/modul/<?= htmlspecialchars($m['gambar']) ?>')">
 
-      <!-- Modul Olahraga -->
-      <div class="col-md-4 mb-4">
-        <a href="materi.php?id_modul=2" class="modul-card" 
-           style="background-image:url('images/modul/olahraga.jpg')">
-          <div class="modul-overlay"></div>
-          <div class="modul-content">
-            <h4>Olahraga</h4>
-            <p>Manajemen olahraga & prestasi</p>
-            <span class="btn-modul">Mulai</span>
-          </div>
-        </a>
-      </div>
+              <div class="modul-overlay"></div>
 
-      <!-- Modul Sportpreneur -->
-      <div class="col-md-4 mb-4">
-        <a href="materi.php?id_modul=3" class="modul-card" 
-           style="background-image:url('images/modul/sportpreneur.jpg')">
-          <div class="modul-overlay"></div>
-          <div class="modul-content">
-            <h4>Sportpreneur</h4>
-            <p>Bisnis berbasis industri olahraga</p>
-            <span class="btn-modul">Mulai</span>
+              <div class="modul-content">
+                <h4><?= htmlspecialchars($m['nama_modul']) ?></h4>
+                <p><?= htmlspecialchars($m['deskripsi']) ?></p>
+                <span class="btn-modul">Mulai</span>
+              </div>
+
+            </a>
           </div>
-        </a>
-      </div>
+
+        <?php endwhile; ?>
+      <?php else: ?>
+        <div class="col-12 text-center text-white">
+          <p>Belum ada program inkubator tersedia.</p>
+        </div>
+      <?php endif; ?>
 
     </div>
   </div>

@@ -8,22 +8,22 @@ if (!isset($_SESSION['id_member'])) {
     exit;
 }
 
-if (!isset($_GET['id_modul'])) {
+if (!isset($_GET['id_sub_modul'])) {
     echo "Modul tidak ditemukan.";
     exit;
 }
 
 $id_member = $_SESSION['id_member'];
-$id_modul  = (int) $_GET['id_modul'];
+$id_sub_modul  = (int) $_GET['id_sub_modul'];
 
 // cek lulus
 $cek = $conn->prepare("
-    SELECT 1 FROM hasil_modul
-    WHERE id_member = ? AND id_modul = ?
+    SELECT 1 FROM hasil_sub_modul
+    WHERE id_member = ? AND id_sub_modul = ?
     AND status = 'LULUS'
     LIMIT 1
 ");
-$cek->bind_param("ii", $id_member, $id_modul);
+$cek->bind_param("ii", $id_member, $id_sub_modul);
 $cek->execute();
 
 if ($cek->get_result()->num_rows > 0) {
@@ -34,12 +34,12 @@ if ($cek->get_result()->num_rows > 0) {
 
 // ambil soal
 $stmt = $conn->prepare("
-    SELECT * FROM soal
-    WHERE id_modul = ?
+    SELECT * FROM soal_sub_modul
+    WHERE id_sub_modul = ?
     ORDER BY RAND()
     LIMIT 5
 ");
-$stmt->bind_param("i", $id_modul);
+$stmt->bind_param("i", $id_sub_modul);
 $stmt->execute();
 $soal = $stmt->get_result();
 
@@ -75,7 +75,7 @@ include 'head.php';
 
     <form action="proses_quiz.php" method="post">
 
-      <input type="hidden" name="id_modul" value="<?= $id_modul ?>">
+      <input type="hidden" name="id_sub_modul" value="<?= $id_sub_modul ?>">
 
       <?php 
       $no = 1;
