@@ -67,31 +67,6 @@ $qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
     bottom: 80px;
     right: 120px;
 }
-
-@media print {
-
-    body * {
-        visibility: hidden;
-    }
-
-    .sertifikat-wrapper,
-    .sertifikat-wrapper * {
-        visibility: visible;
-    }
-
-    .sertifikat-wrapper {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-    }
-
-    @page {
-        size: A4 landscape;
-        margin: 0;
-    }
-
-}
 </style>
 
 <div class="sertifikat-wrapper">
