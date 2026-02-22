@@ -71,6 +71,13 @@ $qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
 
 <div class="sertifikat-wrapper">
 
+    <div class="text-center mb-5">
+        <a href="download_sertifikat.php?id_sub_modul=<?= $id_sub_modul ?>"
+           class="btn btn-warning px-4 py-2">
+           Download PDF Sertifikat
+        </a>
+    </div>
+
     <img src="images/sertifikat.jpeg" class="bg-sertifikat">
 
     <div class="nama-member">
