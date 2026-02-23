@@ -4072,6 +4072,7 @@ input.num-product::-webkit-inner-spin-button {
   padding-bottom: 80px;
   min-height: 100vh;
   background: #f9f9f9;
+  flex: 1;
 }
 
 /* CARD */
@@ -4124,10 +4125,49 @@ input.num-product::-webkit-inner-spin-button {
   transform: translateY(-2px);
 }
 
+.profile-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 60px 5%;
+    background-color: #0F1426;
+}
+
+.attention {
+    flex: 0 0 30%;
+    padding-top: 120px;
+}
+
+.attention-box {
+    background: #1A2238;
+    padding: 25px;
+    border-radius: 16px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border-left: 4px solid #00D4FF;
+}
+
+.attention-box h4 {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
   .profile-section {
     padding-top: 50px; /* JARAK DARI NAVBAR */
+    width: 100%;
   }
+
+  .profile-wrapper {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .attention {
+        width: 100%;
+        padding-top: 10px;
+    }
 }
 
 /*Modul inkubator*/

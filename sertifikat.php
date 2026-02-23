@@ -48,7 +48,7 @@ $qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
 
 .nama-submodul {
     position: absolute;
-    top: 450px;
+    top: 340px;
     width: 100%;
     text-align: center;
     font-size: 20px;
@@ -84,7 +84,7 @@ $qr_link = $url_utama . "verifikasi.php?kode=" . $data['kode_sertifikat'];
     </div>
 
     <div class="nama-submodul">
-        Successfully completed <b><?= $data['nama_sub_modul'] ?></b>
+        <b><?= $data['nama_sub_modul'] ?></b>
     </div>
 
     <div class="tanggal">

@@ -94,7 +94,7 @@
 	                        <li><a href="/inkubator">Inkubator</a></li>
 	                        <li class="active-menu"><a href="/product">Shop</a></li>
 	                        <li><a href="/blog">Blog</a></li>
-	                        <li><a href="/sponsor">Sponsor</a></li>
+	                        <li><a href="/matchmaking">Matchmaking</a></li>
 	                        <li><a href="/event">Event</a></li>
 	                    </ul>
 	                </div>
@@ -158,7 +158,7 @@
 	            <li><a href="/inkubator">Inkubator</a></li>
 	            <li><a href="/product">Shop</a></li>
 	            <li><a href="/blog">Blog</a></li>
-	            <li><a href="/sponsor">Sponsor</a></li>
+	            <li><a href="/matchmaking">Matchmaking</a></li>
 	            <li><a href="/event">Event</a></li>
 	        </ul>
 	    </div>
