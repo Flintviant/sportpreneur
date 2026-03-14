@@ -77,13 +77,40 @@
 	//   $produk[] = $row;
 	// }
 
-	$kategori_btn = [
-	    1 => "Pesan",
-	    2 => "Lihat Jasa",
-	    3 => "Lihat Event",
-	    4 => "Gabung Membership",
-	    5 => "Hubungi Pelatih"
-	];
+	$kategori_btn = [];
+
+	$query = $conn->query("
+	    SELECT j.id_jenis, j.nama_jenis
+	    FROM jenis j
+	    JOIN barang b ON b.id_jenis = j.id_jenis
+	    GROUP BY j.id_jenis
+	");
+
+	while ($row = $query->fetch_assoc()) {
+
+	    switch ($row['id_jenis']) {
+
+	        case 1:
+	            $kategori_btn[$row['id_jenis']] = "Pesan";
+	            break;
+
+	        case 2:
+	            $kategori_btn[$row['id_jenis']] = "Lihat Jasa";
+	            break;
+
+	        case 3:
+	            $kategori_btn[$row['id_jenis']] = "Lihat Event";
+	            break;
+
+	        case 4:
+	            $kategori_btn[$row['id_jenis']] = "Gabung Membership";
+	            break;
+
+	        case 5:
+	            $kategori_btn[$row['id_jenis']] = "Hubungi Pelatih";
+	            break;
+	    }
+	}
 
 	// ambil kategori
 	$kategori_search = [];
@@ -453,13 +480,13 @@
 				        Rp <?= number_format($produk['harga_jual'], 0, ',', '.') ?>
 				      </span>
 
-				      <?php $btn_text = $kategori_btn[$produk['id_kategori']] ?? "Lihat Produk"; ?>
+				      <?php $btn_text = $kategori_btn[$produk['id_jenis']] ?? "Lihat Produk"; ?>
 
 				      <!-- Button Add Cart -->
 				      <a href="#"
 				         class="btn-add-cart add-cart"
 				         data-id="<?= $produk['id_barang'] ?>"
-				         data-kategori="<?= $produk['id_kategori'] ?>"
+				         data-kategori="<?= $produk['id_jenis'] ?>"
 				         data-nama="<?= htmlspecialchars($produk['nama_barang']) ?>"
 				         data-foto="<?= htmlspecialchars($produk['foto_produk']) ?>"
 				         data-harga="<?= $produk['harga_jual'] ?>">
