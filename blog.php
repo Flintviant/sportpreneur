@@ -133,7 +133,7 @@
 								<?php foreach ($produk as $produk): ?>
 									<li class="flex-w flex-t p-b-30">
 										<a href="<?=$url_utama?>product" class="wrao-pic-w small-thumb hov-ovelay1 m-r-20">
-											<img src="<?=$url_utama?>images/<?=$produk['foto_produk']?>" alt="PRODUCT">
+											<img src="<?=$url_admin?>uploads/produk/<?=$produk['foto_produk']?>" alt="PRODUCT">
 										</a>
 
 										<div class="size-215 flex-col-t p-t-8">

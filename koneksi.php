@@ -23,7 +23,7 @@ if (!$conn) {
 $conn->set_charset("utf8mb4");
 
 // config url
-// $url_admin = 'http://sportshop.test/admin/';
+// $url_admin = 'http://admin-sport.test/';
 // $url_utama = 'http://sportshop.test/';
 
 $url_admin = 'https://sportpreneur.id/admin/';

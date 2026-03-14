@@ -56,11 +56,11 @@
 							    </span>
 
 							    <a href="<?=$url_utama?>product">
-							      <img src="images/<?= htmlspecialchars($produks['foto_produk']) ?>" 
+							      <img src="<?=$url_admin?>uploads/produk/<?= htmlspecialchars($produks['foto_produk']) ?>" 
 							           alt="<?= htmlspecialchars($produks['nama_barang']) ?>">
 							    </a>
 
-							    <?php $btn_text = $kategori_btn[$produks['id_kategori']] ?? "Lihat Produk"; ?>
+							    <?php $btn_text = $kategori_btn[$produks['id_jenis']] ?? "Lihat Produk"; ?>
 
 							    <!-- BUTTON -->
 							    <a href="<?=$url_utama?>product" class="block2-btn hero-btn">

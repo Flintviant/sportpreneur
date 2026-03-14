@@ -25,7 +25,7 @@ $modul = $conn->query("
           <div class="col-md-4 mb-4">
             <a href="sub_modul.php?id_modul=<?= $m['id_modul'] ?>" 
                class="modul-card"
-               style="background-image:url('images/modul/<?= htmlspecialchars($m['gambar']) ?>')">
+               style="background-image:url('<?=$url_admin?>uploads/modul/<?= htmlspecialchars($m['gambar']) ?>')">
 
               <div class="modul-overlay"></div>
 

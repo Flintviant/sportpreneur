@@ -466,7 +466,7 @@
 				    	<span class="block2-category">
 					      <?= htmlspecialchars($produk['nama_kategori']) ?>
 					    </span>
-				      <img src="images/<?= htmlspecialchars($produk['foto_produk']) ?>" alt="<?= htmlspecialchars($produk['nama_barang']) ?>">
+				      <img src="<?=$url_admin?>uploads/produk/<?= htmlspecialchars($produk['foto_produk']) ?>" alt="<?= htmlspecialchars($produk['nama_barang']) ?>">
 				    </div>
 
 				    <!-- Info Produk -->

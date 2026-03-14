@@ -47,10 +47,13 @@
 	$sql_barang = $conn->query("
 	  SELECT 
 	    b.*, 
-	    k.nama_kategori
+	    k.nama_kategori,
+	    j.nama_jenis
 	  FROM barang b
 	  JOIN kategori k 
 	    ON b.id_kategori = k.id_kategori
+	  JOIN jenis j
+	    ON b.id_jenis = j.id_jenis
 	  ORDER BY b.id DESC
 	  LIMIT 4
 	");

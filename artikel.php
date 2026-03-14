@@ -267,7 +267,7 @@
 					<div class="p-r-45 p-r-0-lg">
 						<!--  -->
 						<div class="wrap-pic-w how-pos5-parent">
-							<img src="<?= $url_utama ?>images/banner-08.jpg" 
+							<img src="<?= $url_admin ?>uploads/<?=$artikel['gambar']?>" 
      							alt="<?= htmlspecialchars($artikel['judul']) ?>">
 
 							<div class="flex-col-c-m size-123 bg9 how-pos5">
@@ -383,7 +383,7 @@
 								<?php foreach ($produk as $produk): ?>
 									<li class="flex-w flex-t p-b-30">
 										<a href="<?=$url_utama?>product" class="wrao-pic-w small-thumb hov-ovelay1 m-r-20">
-											<img src="<?=$url_utama?>images/<?=$produk['foto_produk']?>" alt="PRODUCT">
+											<img src="<?=$url_admin?>uploads/produk/<?=$produk['foto_produk']?>" alt="PRODUCT">
 										</a>
 
 										<div class="size-215 flex-col-t p-t-8">
